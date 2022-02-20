@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="project">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="boards">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="board" minOccurs="3" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="issues">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="issue" minOccurs="2" maxOccurs="unbounded">
+                                                        <xs:complexType>
+                                                            <xs:sequence>
+                                                                <xs:element name="title" type="xs:string" />
+                                                                <xs:element name="description">
+                                                                    <xs:complexType>
+                                                                        <xs:simpleContent>
+                                                                            <xs:extension base="xs:string">
+                                                                                <xs:attribute name="edited" type="xs:boolean" />
+                                                                            </xs:extension>
+                                                                        </xs:simpleContent>
+                                                                    </xs:complexType>
+                                                                </xs:element>
+                                                                <xs:element name="createdAt" type="xs:dateTime" />
+                                                                <xs:element name="assignee">
+                                                                    <xs:complexType>
+                                                                        <xs:sequence>
+                                                                            <xs:element name="name" type="xs:string" />
+                                                                            <xs:element name="role" type="roleType" />
+                                                                        </xs:sequence>
+                                                                    </xs:complexType>
+                                                                </xs:element>
+                                                                <xs:element name="relatedIssues" minOccurs="0">
+                                                                    <xs:complexType>
+                                                                        <xs:sequence>
+                                                                            <xs:element name="relatedIssue" maxOccurs="unbounded">
+                                                                                <xs:complexType>
+                                                                                    <xs:sequence>
+                                                                                        <xs:element name="title" type="xs:string" />
+                                                                                    </xs:sequence>
+                                                                                    <xs:attribute name="id" type="xs:integer" use="required" />
+                                                                                </xs:complexType>
+                                                                            </xs:element>
+                                                                        </xs:sequence>
+                                                                    </xs:complexType>
+                                                                </xs:element>
+                                                                <xs:element name="comments" minOccurs="0">
+                                                                    <xs:complexType>
+                                                                        <xs:sequence>
+                                                                            <xs:element name="comment" maxOccurs="unbounded">
+                                                                                <xs:complexType>
+                                                                                    <xs:sequence>
+                                                                                        <xs:element name="username" type="xs:string" />
+                                                                                        <xs:element name="content">
+                                                                                            <xs:complexType>
+                                                                                                <xs:simpleContent>
+                                                                                                    <xs:extension base="xs:string">
+                                                                                                        <xs:attribute name="edited" type="xs:boolean" use="required" />
+                                                                                                    </xs:extension>
+                                                                                                </xs:simpleContent>
+                                                                                            </xs:complexType>
+                                                                                        </xs:element>
+                                                                                        <xs:element name="createdAt" type="xs:dateTime" />
+                                                                                    </xs:sequence>
+                                                                                </xs:complexType>
+                                                                            </xs:element>
+                                                                        </xs:sequence>
+                                                                    </xs:complexType>
+                                                                </xs:element>
+                                                            </xs:sequence>
+                                                            <xs:attribute name="severity" type="severityType" use="required" />
+                                                            <xs:attribute name="open" type="xs:boolean" use="required" />
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="label" type="labelType" use="required" />
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+            <xs:attribute name="name" use="required" />
+        </xs:complexType>
+    </xs:element>
+
+    <xs:simpleType name="severityType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="low"></xs:enumeration>
+            <xs:enumeration value="medium"></xs:enumeration>
+            <xs:enumeration value="high"></xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="roleType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="reporter"></xs:enumeration>
+            <xs:enumeration value="developer"></xs:enumeration>
+            <xs:enumeration value="maintainer"></xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="labelType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="todo"></xs:enumeration>
+            <xs:enumeration value="in progress"></xs:enumeration>
+            <xs:enumeration value="review"></xs:enumeration>
+            <xs:enumeration value="done"></xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+</xs:schema>
