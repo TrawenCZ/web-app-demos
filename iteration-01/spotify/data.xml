@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="schema.xsd" ?>
+<User id="1" firstName="Jozko" lastName="zPardubic" email="jozkozpardubic@pardubice.cz" 
+      password="jozko123" birthDate="2001-10-26T21:32:52" profilePicture="jozko.cz/jmenujisejozko">
+
+    <Playlist id="1" name="JozkoJede" coverPicture="jozko.cz/" duration="00:45:20">
+        <Song id="1" name="JozkoIntro" duration="00:45:20" releaseDate="2012-10-26T21:32:52" 
+              streamingAdress="jozko.cz/jozko_intro" coverPicture="jozko.cz/jozko_introP">
+            <Genre id="1" name="Pop" />
+        </Song>
+    </Playlist>
+
+    <Artist>
+        <Album id="1" name="JozkoJedeDeluxe" releaseDate="2013-10-26T21:32:52" coverPicture="jozko.cz/jozko_jede_deluxe">
+
+            <Song id="1" name="JozkoIntro" duration="00:45:20" releaseDate="2012-10-26T21:32:52" 
+                streamingAdress="jozko.cz/jozko_intro" coverPicture="jozko.cz/jozko_introP">
+                <Genre id="1" name="Pop" />
+            </Song>
+
+            <Song id="2" name="JozkoMain" duration="00:05:10" releaseDate="2012-11-26T21:32:52" 
+                streamingAdress="jozko.cz/jozko_main" coverPicture="jozko.cz/jozko_mainP">
+                <Genre id="1" name="Pop" />
+            </Song>
+        </Album>
+
+    </Artist>
+
+</User>
