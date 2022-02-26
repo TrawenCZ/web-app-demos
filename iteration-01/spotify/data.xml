@@ -28,6 +28,9 @@
     </playlist>
 
     <artist id="1">
+        <name>Jozko z Pardubic</name>
+        <verified>true</verified>
+        
         <album id="1" >
             <name>JozkoJedeDeluxe</name>
             <releaseDate>2013-10-26T21:32:52</releaseDate>
