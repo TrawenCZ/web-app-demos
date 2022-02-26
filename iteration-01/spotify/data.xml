@@ -27,7 +27,7 @@
         </song>
     </playlist>
 
-    <artist>
+    <artist id="1">
         <album id="1" >
             <name>JozkoJedeDeluxe</name>
             <releaseDate>2013-10-26T21:32:52</releaseDate>
