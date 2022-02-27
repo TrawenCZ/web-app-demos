@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spoti>
+    <sidebar class="sidebar" tag="aside">
+        <title class="sidebar__brand" tag="h1">Spoti</title>
+        <navigation class="nav" tag="nav">
+            <main-list class="nav__list fa-ul" tag="ul">
+                <list-item class="nav__item" tag="li" active="true">
+                    <icon class="fas fa-home" tag="i" />
+                    <title tag="span">Home</title>
+                </list-item>
+                <list-item class="nav__item" tag="li" active="false">
+                    <icon class="fas fa-search" tag="i" />
+                    <title tag="span">Search</title>
+                </list-item>
+                <list-item class="nav__item" tag="li" active="false">
+                    <icon class="fas fa-book" tag="i" />
+                    <title tag="span">Your library</title>
+                </list-item>
+                <list-item class="nav__item" tag="li" active="false">
+                    <icon class="fas fa-user-friends" tag="i" />
+                    <title tag="span">Friends</title>
+                </list-item>
+            </main-list>
+            <library-list class="nav__list nav__list--line" tag="ul">
+                <list-item class="nav__item" tag="li">
+                    <title tag="span">Chill vibes</title>
+                </list-item>
+                <list-item class="nav__item" tag="li">
+                    <title tag="span">This is Eminem</title>
+                </list-item>
+                <list-item class="nav__item" tag="li">
+                    <title tag="span">This is NF</title>
+                </list-item>
+                <list-item class="nav__item" tag="li">
+                    <title tag="span">Have a great day</title>
+                </list-item>
+            </library-list>
+        </navigation>
+    </sidebar>
+    <main-window class="container">
+        <header class="header" tag="header">
+            <title class="header__title" tag="h2">Good afternoon</title>
+        </header>
+        <playlists class="recent" tag="section">
+            <playlist-card class="card">
+                <cover-image class="card__cover" src="assets/img/this-is-foals.jpeg" alt="Playlist cover image" tag="img" />
+                <controls class="card__control">
+                    <playlist-title class="card__name" tag="span">This is foals</playlist-title>
+                    <playlist-button class="card__play" tag="button">
+                        <icon class="fas fa-1x fa-play" tag="i" />
+                    </playlist-button>
+                </controls>
+            </playlist-card>
+            <playlist-card class="card">
+                <cover-image class="card__cover" src="assets/img/this-is-linkin-park.jpeg" alt="Playlist cover image" tag="img" />
+                <controls class="card__control">
+                    <playlist-title class="card__name" tag="span">This is Linkin park</playlist-title>
+                    <playlist-button class="card__play" tag="button">
+                        <icon class="fas fa-1x fa-play" tag="i" />
+                    </playlist-button>
+                </controls>
+            </playlist-card>
+            <playlist-card class="card">
+                <cover-image class="card__cover" src="assets/img/good-vibes.jpeg" alt="Playlist cover image" tag="img" />
+                <controls class="card__control">
+                    <playlist-title class="card__name" tag="span">Good vibes</playlist-title>
+                    <playlist-button class="card__play" tag="button">
+                        <icon class="fas fa-1x fa-play" tag="i" />
+                    </playlist-button>
+                </controls>
+            </playlist-card>
+            <playlist-card class="card">
+                <cover-image class="card__cover" src="assets/img/glass-animals.jpeg" alt="Playlist cover image" tag="img" />
+                <controls class="card__control">
+                    <playlist-title class="card__name" tag="span">Glass animals</playlist-title>
+                    <playlist-button class="card__play" tag="button">
+                        <icon class="fas fa-1x fa-play" tag="i" />
+                    </playlist-button>
+                </controls>
+            </playlist-card>
+        </playlists>
+        <podcasts class="podcast" tag="section">
+            <title tag="h1">Your beloved podcasts</title>
+            <podcast-list class="podcast-list">
+                <podcast-card class="podcast-card">
+                    <cover-image class="podcast-card__cover" src="assets/img/ted-talks-daily.jpeg" alt="Podcast cover image" tag="img" />
+                    <controls class="podcast-card__control">
+                        <podcast-title class="podcast-card__name" tag="h2">Ted talks daily</podcast-title>
+                        <podcast-description class="podcast-card__description" tag="span">TED</podcast-description>
+                    </controls>
+                </podcast-card>
+                <podcast-card class="podcast-card">
+                    <cover-image class="podcast-card__cover" src="assets/img/zoom-tech-fm.jpeg" alt="Podcast cover image" tag="img" />
+                    <controls class="podcast-card__control">
+                        <podcast-title class="podcast-card__name" tag="h2">Zoom TECH FM</podcast-title>
+                        <podcast-description class="podcast-card__description" tag="span">Sme</podcast-description>
+                    </controls>
+                </podcast-card>
+                <podcast-card class="podcast-card">
+                    <cover-image class="podcast-card__cover" src="assets/img/sme-zoom.jpeg" alt="Podcast cover image" tag="img" />
+                    <controls class="podcast-card__control">
+                        <podcast-title class="podcast-card__name" tag="h2">TECH FM</podcast-title>
+                        <podcast-description class="podcast-card__description" tag="span">Sme</podcast-description>
+                    </controls>
+                </podcast-card>
+            </podcast-list>
+        </podcasts>
+    </main-window>
+</spoti>

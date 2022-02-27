@@ -1,0 +1,180 @@
+:root {
+	--background-gradient: linear-gradient(0deg, rgba(0,0,0,1) 70%, rgba(139,0,29,1) 100%) no-repeat;
+	--background-color: #000;
+	--font-color: #fff;
+	--font-inactive-color: #b3b3b3;
+	--font: 'Rubik', sans-serif;
+	--card-background: hsla(0,0%,100%,.1);
+	--success: #1db954;
+	--sidebar-background: #181818;
+}
+
+/* Reset */
+* {
+	box-sizing: border-box;
+	line-height: 1.25em;
+	margin: 0;
+	padding: 0;
+}
+
+
+body {
+	width: 100%;
+	font-family: var(--font);
+	font-size: 16px;
+    background-color: var(--background-color);
+	background: var(--background-gradient);
+	color: var(--font-color);
+}
+
+ul {
+	list-style: none;
+}
+
+a, a:hover, a:focus {
+	color: inherit;
+	text-decoration: none;
+}
+
+.header {
+	padding: 1rem;
+	margin: 1rem;
+}
+
+.header__title {
+	padding-top: 2rem;
+}
+
+.recent {
+	margin: 1rem;
+	display: grid;
+	grid-template-columns: repeat(2, 50%);
+	grid-template-rows: repeat(2, 50%);
+}
+
+.card {
+    background-color: var(--card-background);
+	height: 6rem;
+	border-radius: 0.75rem;
+	display: inline-flex;
+	flex: 1;
+	margin: 1rem;
+	cursor: pointer;
+}
+
+.card__cover {
+	border-top-left-radius: 0.25rem;
+	border-bottom-left-radius: 0.25rem;
+	height: 100%;
+}
+
+.card__name {
+	padding-right: 0.5rem;
+}
+
+.card__control {
+	align-self: center;
+	display: inline-flex;
+	width: 100%;
+	justify-content: space-between;
+	font-size: 1.2rem;
+	padding: 0 1rem;
+}
+
+.card__play {
+	border-radius: 50%;
+	height: 2rem;
+	width: 2rem;
+	border: 0;
+	background-color: var(--success);
+	color: var(--font-color);
+	justify-content: center;
+	vertical-align: middle;
+	transition: 300ms ease;
+	opacity: 0;
+}
+
+.card:hover .card__play {
+	transform: scale(1.25);
+	opacity: 1;
+}
+
+.podcast {
+	margin: 1rem;
+	padding: 1rem;
+}
+
+.podcast-list {
+	display: inline-flex;
+	padding: 1.5rem 0;
+}
+
+.podcast-card {
+	cursor: pointer;
+	padding: 1.2rem;
+	margin-right: 1rem;
+    background: var(--card-background);
+	border-radius: 0.25rem;
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+}
+
+.podcast-card__control {
+	margin-top: 1rem;
+}
+
+.podcast-card__cover {
+	width: 8rem;
+	align-self: center;
+	border-radius: 5%;
+}
+
+.sidebar {
+	height: 100vh;
+	background-color: var(--sidebar-background);
+}
+
+.sidebar__brand {
+	text-align: center;
+	padding: 1rem;
+}
+
+.application {
+	display: grid;
+	grid-template-columns: 15% 85%;
+}
+
+.nav__list {
+	margin: 0 2rem;
+}
+
+.nav__item {
+	padding: 1rem 0;
+	font-weight: 700;
+}
+
+.nav__item i {
+	padding-right: 1rem;
+}
+
+.nav {
+	padding: 0 1rem;
+}
+
+.nav__list--line {
+	border-top: 0.05rem solid var(--font-color);
+	margin: 1rem 0;
+	padding: 1rem 0;
+}
+
+.nav__list--line .nav__item {
+	padding: 0.5rem 0;
+	font-weight: 400;
+	color: var(--font-inactive-color);
+	font-size: 0.9rem;
+}
+
+.nav__list--line .nav__item:hover {
+	color: var(--font-color);
+}
