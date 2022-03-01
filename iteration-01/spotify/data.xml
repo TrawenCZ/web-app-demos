@@ -35,6 +35,7 @@
                 <genres>
                     <genre id="1">
                         <name>Pop</name>
+                        <coverPicture>genres.com/pop</coverPicture>
                     </genre>
                 </genres>
                 
