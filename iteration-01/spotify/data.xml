@@ -31,6 +31,13 @@
 
                     </song>
                 </songs>
+
+                <genres>
+                    <genre id="1">
+                        <name>Pop</name>
+                    </genre>
+                </genres>
+                
             </playlist>
         </playlists>
 
