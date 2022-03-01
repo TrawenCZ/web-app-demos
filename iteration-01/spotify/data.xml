@@ -11,7 +11,6 @@
 
         <playlists>
             <playlist id="1">
-                <name>JozkoJede</name>
                 <coverPicture>jozko.cz/jozko</coverPicture>
                 <duration>00:45:20</duration>
 
@@ -26,6 +25,7 @@
                         <genres>
                             <genre id="1">
                                 <name>Pop</name>
+                                <coverPicture>genres.com/pop</coverPicture>
                             </genre>
                         </genres>
 
@@ -42,8 +42,9 @@
         </playlists>
 
         <artist id="1">
-            <name>Jozko z Pardubic</name>
             <verified>true</verified>
+            <coverPicture>jozko.cz/jozko</coverPicture>
+            <profilePicture>jozko.cz/jozko</profilePicture>
             
             <albums>
                 <album id="1" >
@@ -62,6 +63,7 @@
                             <genres>
                                 <genre id="1">
                                     <name>Pop</name>
+                                    <coverPicture>genres.com/pop</coverPicture>
                                 </genre>
                             </genres>
 
@@ -77,6 +79,7 @@
                             <genres>
                                 <genre id="2">
                                     <name>Metal</name>
+                                    <coverPicture>genres.com/metal</coverPicture>
                                 </genre>
                             </genres>
 

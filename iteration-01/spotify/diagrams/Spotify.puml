@@ -29,7 +29,7 @@ entity Album {
     * description: Text
     * name: Text
     * realease_date: Timestamp
-    * profile_picture: <<URL>>
+    * cover_picture: <<URL>>
 }
 
 entity Playlist {
