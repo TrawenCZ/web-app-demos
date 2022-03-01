@@ -1,8 +1,8 @@
-@startuml
+@startuml spotify
+
 hide circle
 
 skinparam Linetype ortho
-
 entity User {
     * id: <<Serial / UUID>>
     ---
@@ -57,11 +57,12 @@ entity Genre {
     * cover_picture: <<URL>>
 }
 
-User ||..O| Artist : can_be_artist
-Artist ||..O{ Album : has_albums
-Album ||..O{ Song : has_songs
-Song }O..O{ Genre : songs_have_genres
-User ||..O{ Playlist :user_playlists
-Playlist }O..O{ Genre : playlists_have_genres
-Playlist }O..O{ Song : playlists_have_songs
-@enduml
+Artist ||..o{ Album : has_albums
+User ||..o| Artist : can_be_artist
+Album ||..o{ Song : has_songs
+Song }o..o{ Genre : songs_have_genres
+User ||..o{ Playlist : user_playlists
+Playlist }o..o{ Genre : playlists_have_genres
+Playlist }o..o{ Song : playlists_have_songs
+
+@endtuml
