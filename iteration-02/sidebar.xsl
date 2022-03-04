@@ -30,7 +30,7 @@
                 </ul>
                 <ul class="{//library-list/@class}">
                     <xsl:for-each select="navigation/library-list/list-item">
-                        <li class="{//library-list/list-item/@class}">
+                        <li class="{@class}">
                             <span>
                                 <xsl:value-of select="title"/>
                             </span>

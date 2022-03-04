@@ -22,8 +22,7 @@
             </head>
             <body>
                 <main class="application">
-                    <xsl:apply-templates match="spotify/sidebar"/>
-                    <xsl:apply-templates match="spotify/main-window"/>
+                    <xsl:apply-templates match="spoti/sidebar"/>
                 </main>
             </body>
         </html>
