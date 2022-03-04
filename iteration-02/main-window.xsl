@@ -5,7 +5,7 @@
     <xsl:template match="main-window">
         <div class="{@class}">
             <header class="{header/@class}">
-                <h2 class="{title/@class}">
+                <h2 class="{header/title/@class}">
                     <xsl:value-of select="header/title" />
                 </h2>
             </header>
@@ -27,7 +27,7 @@
             </section>
 
             <section class="{//podcasts/@class}">
-                <h1 class="{//podcasts/title/@class}">
+                <h1>
                     <xsl:value-of select="//podcasts/title" />
                 </h1>
                     <div class="{//podcasts/podcast-list/@class}">
