@@ -39,7 +39,7 @@
                                         <xsl:value-of select="controls/podcast-title" />
                                     </h2>
                                     <span class="{controls/podcast-description/@class}">
-                                        <xsl:value-of select="controls/podcast-decription" />
+                                        <xsl:value-of select="controls/podcast-description" />
                                     </span>
                                 </div>
                             </div>

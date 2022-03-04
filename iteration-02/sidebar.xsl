@@ -8,7 +8,7 @@
                 <xsl:value-of select="title" />
             </h1>
             <nav class="{navigation/@class}">
-                <ul class="{main-list/@class}">
+                <ul class="{navigation/main-list/@class}">
                     <xsl:for-each select="navigation/main-list/list-item">
                         <xsl:if test="@active='true'">
                             <li class="nav__item nav__item--active">
