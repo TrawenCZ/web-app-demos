@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
     <xsl:output method="html" />
+    <xsl:include href="main-window.xsl" />
+    <xsl:include href="sidebar.xsl" />
 
     <xsl:template match="/">
         <xsl:text disable-output-escaping='yes'>&lt;!DOCTYPE html&gt;</xsl:text>
@@ -19,9 +21,9 @@
                 <link rel="stylesheet" href="assets/css/style.css" />
             </head>
             <body>
-                <!-- our app -->
                 <main class="application">
-                    <!-- TODO: Continue with the task -->
+                    <xsl:apply-templates match="spotify/sidebar"/>
+                    <xsl:apply-templates match="spotify/main-window"/>
                 </main>
             </body>
         </html>
