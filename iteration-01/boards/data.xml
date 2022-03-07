@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="schema.xsd" ?>
+<project name="Iteration-01">
+  <boards>
+    <board label="todo">
+      <issues>
+        <issue severity="low" open="true">
+          <title>Jedna</title>
+          <description>
+          </description>
+          <createdAt>2022-02-22T15:38:00</createdAt>
+          <assignee>
+            <name>PepaJozko</name>
+            <role>reporter</role>
+          </assignee>
+        </issue>
+        <issue severity="low" open="true">
+          <title>Jedna</title>
+          <description>
+          </description>
+          <createdAt>2022-02-22T15:38:00</createdAt>
+          <assignee>
+            <name>PepaJozko</name>
+            <role>reporter</role>
+          </assignee>
+        </issue>
+      </issues>
+    </board>
+    <board label="todo">
+      <issues>
+        <issue severity="low" open="true">
+          <title>Jedna</title>
+          <description>
+          </description>
+          <createdAt>2022-02-22T15:38:00</createdAt>
+          <assignee>
+            <name>PepaJozko</name>
+            <role>reporter</role>
+          </assignee>
+        </issue>
+        <issue severity="low" open="true">
+          <title>Jedna</title>
+          <description>
+          </description>
+          <createdAt>2022-02-22T15:38:00</createdAt>
+          <assignee>
+            <name>PepaJozko</name>
+            <role>reporter</role>
+          </assignee>
+        </issue>
+      </issues>
+    </board>
+    <board label="todo">
+      <issues>
+        <issue severity="low" open="true">
+          <title>Jedna</title>
+          <description>
+          </description>
+          <createdAt>2022-02-22T15:38:00</createdAt>
+          <assignee>
+            <name>PepaJozko</name>
+            <role>reporter</role>
+          </assignee>
+        </issue>
+        <issue severity="low" open="true">
+          <title>Jedna</title>
+          <description>
+          </description>
+          <createdAt>2022-02-22T15:38:00</createdAt>
+          <assignee>
+            <name>PepaJozko</name>
+            <role>reporter</role>
+          </assignee>
+        </issue>
+      </issues>
+    </board>
+
+  </boards>
+</project>

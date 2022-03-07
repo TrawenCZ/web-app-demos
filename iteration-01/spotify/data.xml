@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="schema.xsd" ?>
+<users>
+    <user id="1" >
+        <firstName>Jozko</firstName>
+        <lastName>zPardubic</lastName>
+        <email>jozkozpardubic@pardubice.cz</email>
+        <password>jozko123</password>
+        <birthDate>2001-10-26T00:00:00</birthDate>
+        <profilePicture>jozko.cz/jmenujisejozko</profilePicture>
+
+        <playlists>
+            <playlist id="1">
+                <coverPicture>jozko.cz/jozko</coverPicture>
+                <duration>00:45:20</duration>
+
+                <songs>
+                    <song id="1">
+                        <name>JozkoIntro</name>
+                        <duration>00:45:20</duration>
+                        <releaseDate>2012-10-26T21:32:52</releaseDate>
+                        <streamingAdress>jozko.cz/jozko_intro</streamingAdress>
+                        <coverPicture>jozko.cz/jozko_introP</coverPicture>
+
+                        <genres>
+                            <genre id="1">
+                                <name>Pop</name>
+                                <coverPicture>genres.com/pop</coverPicture>
+                            </genre>
+                        </genres>
+
+                    </song>
+                </songs>
+
+                <genres>
+                    <genre id="1">
+                        <name>Pop</name>
+                        <coverPicture>genres.com/pop</coverPicture>
+                    </genre>
+                </genres>
+                
+            </playlist>
+        </playlists>
+
+        <artist id="1">
+            <verified>true</verified>
+            <coverPicture>jozko.cz/jozko</coverPicture>
+            <profilePicture>jozko.cz/jozko</profilePicture>
+            
+            <albums>
+                <album id="1" >
+                    <name>JozkoJedeDeluxe</name>
+                    <releaseDate>2013-10-26T21:32:52</releaseDate>
+                    <coverPicture>jozko.cz/jozko_jede_deluxe</coverPicture>
+
+                    <songs>
+                        <song id="1">
+                            <name>JozkoIntro</name>
+                            <duration>00:45:20</duration>
+                            <releaseDate>2012-10-26T21:32:52</releaseDate>
+                            <streamingAdress>jozko.cz/jozko_intro</streamingAdress>
+                            <coverPicture>jozko.cz/jozko_introP</coverPicture>
+
+                            <genres>
+                                <genre id="1">
+                                    <name>Pop</name>
+                                    <coverPicture>genres.com/pop</coverPicture>
+                                </genre>
+                            </genres>
+
+                        </song>
+
+                        <song id="2">
+                            <name>JozkoMain</name>
+                            <duration>00:05:10</duration>
+                            <releaseDate>2012-11-26T21:32:52</releaseDate>
+                            <streamingAdress>jozko.cz/jozko_main</streamingAdress>
+                            <coverPicture>jozko.cz/jozko_mainP</coverPicture>
+
+                            <genres>
+                                <genre id="2">
+                                    <name>Metal</name>
+                                    <coverPicture>genres.com/metal</coverPicture>
+                                </genre>
+                            </genres>
+
+                        </song>
+                    </songs>
+                </album>
+            </albums>
+        </artist>
+    </user>
+</users>

@@ -1,0 +1,68 @@
+@startuml spotify
+
+hide circle
+
+skinparam Linetype ortho
+entity User {
+    * id: <<Serial / UUID>>
+    ---
+    * first_name: Text
+    * last_name: Text
+    * email: Text
+    * password: Text
+    * birth_date: Timestamp
+    * profile_picture: <<URL>>
+}
+
+entity Artist {
+    * id: <<Serial / UUID>>
+    ---
+    * description: Text
+    * verified: bool
+    * cover_picture: <<URL>>
+    * profile_picture: <<URL>>
+}
+
+entity Album {
+    * id: <<Serial>>
+    ---
+    * description: Text
+    * name: Text
+    * realease_date: Timestamp
+    * cover_picture: <<URL>>
+}
+
+entity Playlist {
+    * id: <<Serial>>
+    ---
+    * duration: Timestamp
+    * cover_picture: <<URL>>
+}
+
+entity Song {
+    * id: <<Serial>>
+    ---
+    * name: Text
+    * duration: Timestamp
+    * realease_date: Timestamp
+    * streaming_adress: <<URL>>
+    * cover_picture: <<URL>>
+}
+
+entity Genre {
+    * id: <<Serial>>
+    ---
+    * name: Text
+    * description: Text
+    * cover_picture: <<URL>>
+}
+
+Artist ||..o{ Album : has_albums
+User ||..o| Artist : can_be_artist
+Album ||..o{ Song : has_songs
+Song }o..o{ Genre : songs_have_genres
+User ||..o{ Playlist : user_playlists
+Playlist }o..o{ Genre : playlists_have_genres
+Playlist }o..o{ Song : playlists_have_songs
+
+@endtuml
