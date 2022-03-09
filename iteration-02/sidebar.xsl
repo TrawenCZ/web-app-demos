@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
     <xsl:output method="html" />
+    <xsl:include href="list-item_main.xsl" />
+    <xsl:include href="list-item_lib.xsl" />
 
     <xsl:template match="sidebar">
         <aside class="{@class}">
@@ -9,33 +11,10 @@
             </h1>
             <nav class="{navigation/@class}">
                 <ul class="{navigation/main-list/@class}">
-                    <xsl:for-each select="navigation/main-list/list-item">
-                        <xsl:if test="@active='true'">
-                            <li class="nav__item nav__item--active">
-                                <i class="{icon/@class}"></i>
-                                <span>
-                                    <xsl:value-of select="title"/>
-                                </span>
-                            </li>
-                        </xsl:if>
-                        <xsl:if test="@active='false'">
-                            <li class="nav__item">
-                                <i class="{icon/@class}"></i>
-                                <span>
-                                    <xsl:value-of select="title"/>
-                                </span>
-                            </li>
-                        </xsl:if>    
-                    </xsl:for-each>
+                    <xsl:apply-templates select="navigation/main-list/list-item"/>
                 </ul>
-                <ul class="{//library-list/@class}">
-                    <xsl:for-each select="navigation/library-list/list-item">
-                        <li class="{@class}">
-                            <span>
-                                <xsl:value-of select="title"/>
-                            </span>
-                        </li>
-                    </xsl:for-each>
+                <ul class="{navigation/library-list/@class}">
+                    <xsl:apply-templates select="navigation/library-list/list-item"/>
                 </ul>
             </nav>
         </aside>
