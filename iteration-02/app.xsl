@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
     <xsl:output method="html" />
+    <xsl:include href="main-window.xsl" />
+    <xsl:include href="sidebar.xsl" />
 
     <xsl:template match="/">
         <xsl:text disable-output-escaping='yes'>&lt;!DOCTYPE html&gt;</xsl:text>
         <html lang="en">
             <head>
                 <!-- metadata and fonts/styles linking -->
-                <meta charset="UTF-8" />
+                <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
                 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
                 <title>Spoti Welcome</title>
@@ -19,9 +21,8 @@
                 <link rel="stylesheet" href="assets/css/style.css" />
             </head>
             <body>
-                <!-- our app -->
                 <main class="application">
-                    <!-- TODO: Continue with the task -->
+                    <xsl:apply-templates match="spoti/sidebar"/>
                 </main>
             </body>
         </html>
