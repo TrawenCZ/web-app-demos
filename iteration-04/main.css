@@ -1,0 +1,113 @@
+@font-face {
+    font-family: Roboto;
+    src: url('assets/Roboto/Roboto-Light.ttf');
+}
+
+.main {
+    display: grid;
+    grid-template-rows: auto 10vh 15vh 15vh 5vh auto;
+    grid-template-columns: 100vw;
+}
+
+#main__gta-logo {
+    width: 100vw;
+    grid-row: 1;
+}
+
+#main__gta-car {
+    width: 100vw;
+    grid-row: 7;
+}
+
+#main__title {
+    grid-row: 1;
+
+    margin-left: 3%;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 1000;
+    color: #FFFFFF;
+}
+
+.main__metadata {
+    grid-row: 2;
+    display: grid;
+    grid-template-rows: 30% 30% 40%;
+    grid-template-columns: 50% 50%;
+}
+
+.main__metadata__item-left {
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    color: #BBBBBB;
+
+    grid-column: 1;
+    margin-left: 10%;
+}
+
+.main__metadata__item-right {
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    color: #67C1F5;
+
+    grid-column: 2;
+}
+
+.main__metadata__item {
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    color: #E7E7E7;
+
+    grid-column: 2;
+}
+
+#dev {
+    grid-row: 1;
+}
+
+#pub {
+    grid-row: 2;
+}
+
+#rels {
+    grid-row: 3;
+}
+
+#rsnth {
+    grid-row: 1;
+}
+
+#rsgms {
+    grid-row: 2;
+}
+
+#rlsdt {
+    grid-row: 3;
+}
+
+#description {
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    color: #E7E7E7;
+    grid-row: 3;
+    margin: 3%;
+}
+@media screen and (max-width: 1099px) {
+    #path {
+        display: none;
+    }
+    .small-images {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 1100px) {
+    .main {
+        display: grid;
+    }
+}
+

@@ -5,7 +5,70 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Grand Theft Auto V on Steam</title>
-    <link rel="stylesheet" href="style.css">
+      <link rel="stylesheet" href="style.css">
+      <link rel="stylesheet" href="menu.css">
+      <link rel="stylesheet" href="main.css">
+      <link rel="stylesheet" href="tags.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
-  <body></body>
+  <body>
+      <header class="container-header">
+          <img src="assets/logo_steam.svg" alt="Steam Logo" class="header__logo"/>
+          <div id="store" class="header__item">STORE</div>
+          <div id="community" class="header__item">COMMUNITY</div>
+          <div id="about" class="header__item">ABOUT</div>
+          <div id="support" class="header__item">SUPPORT</div>
+      </header>
+
+
+      <div id="root">
+          <div class="container-menu">
+              <div class="menu__item">Your store</div>
+              <div class="menu__item">New & Noteworthy</div>
+              <div class="menu__item">Categories</div>
+              <div class="menu__item">Points Shop</div>
+              <div class="menu__item">News</div>
+              <div class="menu__item">Labs</div>
+              <div id="searchbox" class="menu__item">
+                  <div class="searchbox__item">search</div>
+                  <i class="fa fa-search"></i>
+              </div>
+          </div>
+
+          <div class="photos">
+              <img src="assets/game_card.jpg" alt="GTA Logo" id="main__gta-logo">
+              <div class="small-images">
+                  <img src="assets/small_img1.jpg" alt="GTA Picture" id="main__gta-im1">
+                  <img src="assets/small_img2.jpg" alt="GTA Picture" id="main__gta-im2">
+                  <img src="assets/small_img3.jpg" alt="GTA Picture" id="main__gta-im3">
+                  <img src="assets/small_img4.jpg" alt="GTA Picture" id="main__gta-im4">
+                  <img src="assets/small_img5.jpg" alt="GTA Picture" id="main__gta-im5">
+              </div>
+          </div>
+          <div class="main">
+              <div id="path">All Games > Action Games > Grand Theft Auto V</div>
+              <h1 id="main__title" class="main__item"><strong>Grand Theft Auto V</strong></h1>
+              <div class="main__metadata">
+                  <div id="dev" class="main__metadata__item-left">Developer</div>
+                  <div id="pub" class="main__metadata__item-left">Publisher</div>
+                  <div id="rels" class="main__metadata__item-left">Released</div>
+
+                  <div id="rsnth" class="main__metadata__item-right"><strong>Rockstar North</strong></div>
+                  <div id="rsgms" class="main__metadata__item-right"><strong>Rockstar Games</strong></div>
+                  <div id="rlsdt" class="main__metadata__item"><strong>14 Apr, 2015</strong></div>
+              </div>
+
+              <div id="description">Grand Theft Auto V for PC offers players the option to explore the award-winning world of Los Santos and Blaine County in resolutions of up to 4k and beyond, as well as the chance to experience the game running at 60 frames per second. </div>
+
+              <div class="main__tags">
+                  <div id="main__tags__header">TAGS</div>
+                  <div id="openworld" class="main__tags__item">Open World</div>
+                  <div id="action" class="main__tags__item">Action</div>
+                  <div id="multiplayer" class="main__tags__item">Multiplayer</div>
+                  <div id="plus" class="main__tags__item">+</div>
+              </div>
+          </div>
+          <img src="assets/main_img.jpg" alt="Game Image 1" id="main__gta-car">
+      </div>
+  </body>
 </html>

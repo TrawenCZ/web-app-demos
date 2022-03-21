@@ -1,0 +1,49 @@
+@font-face {
+    font-family: Roboto;
+    src: url('assets/Roboto/Roboto-Light.ttf');
+}
+
+.main__tags {
+    display: grid;
+    grid-template-columns: 2vw auto auto auto auto auto;
+    grid-template-rows: 50% 50%;
+    grid-column-gap: 2%;
+}
+
+.main__tags__item {
+    background: rgba(103, 193, 245, 0.2);
+    border-radius: 4px;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    color: #67C1F5;
+    grid-row: 2;
+    align-self: center;
+    justify-content: center;
+}
+
+#main__tags__header {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    margin-top: 30%;
+    color: #556772;
+    grid-column: 2;
+    grid-row: 1;
+}
+
+#openworld {
+    grid-column: 2;
+}
+
+#action {
+    grid-column: 3;
+}
+
+#multiplayer {
+    grid-column: 4;
+}
+
+#plus {
+    grid-column: 5;
+}

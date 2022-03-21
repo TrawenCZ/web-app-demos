@@ -1,0 +1,124 @@
+@font-face {
+    font-family: Roboto;
+    src: url('assets/Roboto/Roboto-Light.ttf');
+}
+
+.container-menu {
+    display: grid;
+    height: 40vh;
+    width: 100vw;
+    grid-template-columns: 5% 90% 5%;
+    grid-template-rows: 5% auto auto auto auto auto auto 17% 5%;
+    background: linear-gradient(90deg, #4371A5 0%, #142981 100%);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.menu__item {
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: smaller;
+    color: white;
+    grid-column: 2;
+}
+
+.menu__item:nth-child(1) {
+    grid-row: 2;
+}
+
+.menu__item:nth-child(2) {
+    grid-row: 3;
+}
+
+.menu__item:nth-child(3) {
+    grid-row: 4;
+}
+
+.menu__item:nth-child(4) {
+    grid-row: 5;
+}
+
+.menu__item:nth-child(5) {
+    grid-row: 6;
+}
+
+.menu__item:nth-child(6) {
+    grid-row: 7;
+}
+
+#searchbox {
+    grid-row: 8;
+    position: relative;
+    background: #5F849B;
+    box-shadow: inset 0px 2px 5px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+}
+.searchbox__item {
+    font-family: Roboto, sans-serif;
+    font-style: italic;
+    font-weight: 500;
+    color: #505050;
+    font-size: 120%;
+    position: absolute;
+    left: 5%;
+    top: 25%;
+}
+
+.fa-search {
+    position: absolute;
+    right: 3%;
+    top: 30%;
+    color: #505050;
+}
+
+@media screen and (min-width: 1100px) {
+    .container-menu {
+        grid-row: 2;
+        grid-column: 2;
+        display: grid;
+        height: 100%;
+        width: 100%;
+        grid-template-columns: auto auto auto auto auto auto auto 30%;
+        grid-template-rows: 20% 60% 20%;
+        background: linear-gradient(90deg, #4371A5 0%, #142981 100%);
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    }
+
+    .menu__item {
+        align-self: center;
+    }
+    .menu__item:nth-child(1) {
+        grid-row: 2;
+        grid-column: 2;
+    }
+
+    .menu__item:nth-child(2) {
+        grid-row: 2;
+        grid-column: 3;
+    }
+
+    .menu__item:nth-child(3) {
+        grid-row: 2;
+        grid-column: 4;
+    }
+
+    .menu__item:nth-child(4) {
+        grid-row: 2;
+        grid-column: 5;
+    }
+
+    .menu__item:nth-child(5) {
+        grid-row: 2;
+        grid-column: 6;
+    }
+
+    .menu__item:nth-child(6) {
+        grid-row: 2;
+        grid-column: 7;
+    }
+    #searchbox {
+        grid-row: 2;
+        grid-column: 8;
+
+    }
+}
