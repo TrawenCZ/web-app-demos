@@ -7,7 +7,7 @@
     display: grid;
     grid-template-columns: 1vw auto auto auto auto auto;
     grid-template-rows: 50% 50%;
-    grid-column-gap: 4%;
+    grid-column-gap: 2%;
 }
 
 .main__tags__item {

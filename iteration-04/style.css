@@ -15,7 +15,6 @@ body {
     width: 100vw;
     height: 15vh;
     background: #121A24;
-    justify-content: center;
 }
 
 
@@ -28,6 +27,9 @@ body {
 
 @media screen and (max-width: 1100px) {
     .header__item {
+        display: none;
+    }
+    #sign-in-frame {
         display: none;
     }
 }
@@ -77,8 +79,26 @@ body {
         display: grid;
         width: 100vw;
         height: 85vh;
-        grid-template-rows: 3vh 8vh 3vh auto ;
+        grid-template-rows: 3vh 8vh 3vh auto 5vh auto;
         grid-template-columns: 15vw 70vw 15vw;
+    }
+
+    #sign-in-frame {
+        grid-column: 2;
+        grid-row: 5;
+        background: rgba(0, 0, 0, 0.2);
+        align-self: center;
+    }
+
+    #sign-in {
+
+        font-family: 'Roboto', sans-serif;
+        font-style: normal;
+        align-self: center;
+        margin: 1.5%;
+        font-size: small;
+        font-weight: 500;
+        color: #FFFFFF;
     }
 
 }

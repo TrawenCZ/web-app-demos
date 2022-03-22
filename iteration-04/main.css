@@ -21,10 +21,8 @@
 
 #main__title {
     grid-row: 2;
-
     margin-left: 3%;
     font-family: 'Roboto', sans-serif;
-    font-style: normal;
     font-weight: 1000;
     color: #FFFFFF;
 }
@@ -43,7 +41,7 @@
     color: #BBBBBB;
 
     grid-column: 1;
-    margin-left: 10%;
+    margin-left: 6%;
 }
 
 .main__metadata__item-right {
@@ -139,7 +137,7 @@
         grid-row: 4;
         display: grid;
         grid-template-rows: 5% 15% auto 20%;
-        grid-template-columns: 60% 40%;
+        grid-template-columns: 60% auto;
         grid-column-gap: 2%;
     }
 
