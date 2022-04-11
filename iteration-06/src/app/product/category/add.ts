@@ -8,7 +8,7 @@ import type { ProductAddCategoryResult } from "../../../types/return-types";
  * Specifications:
  * - If either the product or the category do not exist, should return an error.
  * - If the connection already exists, nothing should change.
- * - Sort the products by their name alphabetically (a -> z (set proper orderBy)).
+ * - Sort the categories by their name alphabetically (a -> z (set proper orderBy)).
  *
  * @param productId - ID of the product
  * @param categoryId - ID of the category

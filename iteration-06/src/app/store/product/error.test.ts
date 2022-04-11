@@ -18,6 +18,6 @@ describe("Test errors", () => {
       "de560dc9-a675-48ea-81a4-2e223ebd8626"
     );
 
-    expect(res).toEqual(Result.err(new Error("Product does not exist")));
+    expect(res).toEqual(Result.err(new Error("Unspecified error")));
   });
 });
