@@ -35,9 +35,5 @@ coverage
 # Ignore built ts files
 dist/**/*
 
-# ignore yarn.lock
-package-lock.json
-yarn.lock
-
 # ignore .env files
 **/.env
