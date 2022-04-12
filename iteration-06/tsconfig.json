@@ -1,0 +1,7 @@
+{
+  "extends": "@tsconfig/node16-strictest",
+  "compilerOptions": {
+    "strictNullChecks": true,
+    "importsNotUsedAsValues": "preserve"
+  }
+}

@@ -1,0 +1,8 @@
+@startuml heureka-data
+
+hide circle
+skinparam Linetype ortho
+
+'here goes your ERD
+
+@enduml

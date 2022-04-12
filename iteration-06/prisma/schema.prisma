@@ -1,0 +1,71 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./database.db"
+}
+
+model Category {
+  id      String @id @default(uuid())
+  name    String
+  picture String
+
+  products Product[]
+}
+
+model Product {
+  id          String         @id @default(uuid())
+  name        String
+  description String
+  photos      ProductPhoto[]
+  categories  Category[]
+  inStores    StoreProduct[]
+}
+
+model ProductPhoto {
+  id        String  @id @default(uuid())
+  productId String
+  product   Product @relation(fields: [productId], references: [id])
+  source    String
+  isMain    Boolean
+}
+
+model Store {
+  id           String  @id @default(uuid())
+  name         String
+  eshopAddress String
+  logo         String?
+
+  products StoreProduct[]
+}
+
+model StoreProduct {
+  id        String @id @default(uuid())
+  productId String
+  storeId   String
+
+  product Product        @relation(fields: [productId], references: [id])
+  store   Store          @relation(fields: [storeId], references: [id])
+  prices  ProductPrice[]
+
+  @@unique([productId, storeId])
+}
+
+model ProductPrice {
+  id             String       @id @default(uuid())
+  storeProduct   StoreProduct @relation(fields: [storeProductId], references: [id])
+  storeProductId String
+
+  validFrom DateTime
+  price     Float
+  currency  String
+}
+
+// TODO: Write the TASK 1 models here
+// If necessary, you can add relations in the original model above;
+// only **append** to the existing model, do not change any functionality (or the tests won't work)
