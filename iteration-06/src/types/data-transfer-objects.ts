@@ -5,8 +5,8 @@ export default interface SeedFileStructure {
   /**
    * @todo: change these to the correct data types
    */
-  stores: any;
-  storeProducts: any;
+  stores: StoreDTO[];
+  storeProducts: StoreProductDTO[];
 }
 
 export interface CategoryDTO {
@@ -30,6 +30,23 @@ export interface ProductPhotoDTO {
   isMain: boolean;
 }
 
+export interface StoreDTO {
+  id: string;
+  name: string;
+  eshopAddress: string;
+}
+
+export interface StoreProductDTO {
+  storeId: string;
+  productId: string;
+  prices: PriceDTO;
+}
+
+export interface PriceDTO {
+  validFrom: string;
+  price: number;
+  currency: string;
+}
 /**
  * @todo: finish the DTO interfaces -> stores, store products and prices
  * the prices are modelled non-relationally

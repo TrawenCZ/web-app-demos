@@ -3,6 +3,78 @@
 hide circle
 skinparam Linetype ortho
 
-'here goes your ERD
+entity Category {
+    * id: <<autoincrement>>
+    ---
+    * name: Text
+    * description: Text
+}
+
+entity Product {
+    * id: <<autoincrement>>
+    ---
+    * name: Text
+    * description : Text
+}
+
+entity ProductPhoto {
+    * id: <<autoincrement>>
+    ---
+    * productId : Text
+    * source : Text
+    * isMain : Boolean
+}
+
+entity Store {
+    * id: <<autoincrement>>
+    ---
+    * name: Text
+    * eshopAddress : Text
+    logo : Text
+}
+
+entity StoreProduct {
+    * id: <<autoincrement>>
+}
+
+entity ProductPrice {
+    * id: <<autoincrement>>
+    ---
+    * validFrom : DateTime
+    * price : Float
+    * currency : Text
+}
+
+entity ProductReview {
+    * id: <<autoincrement>>
+    ---
+    * isPositive : Boolean
+    * createdAt : DateTime
+    * description : Text
+}
+
+entity StoreReview {
+    * id: <<autoincrement>>
+    ---
+    * isPositive : Boolean
+    * createdAt : DateTime
+    * description : Text
+}
+
+entity User {
+    * id: <<autoincrement>>
+    ---
+    * username : Text
+}
+
+Category }|..o{ Product
+Product ||..|{ ProductPhoto
+Product ||..o{ StoreProduct
+Store ||..o{ StoreProduct
+StoreProduct ||..o{ ProductPrice
+User ||..o{ StoreReview
+User ||..o{ ProductReview
+StoreReview }o..|| Store
+ProductReview }o..|| Product
 
 @enduml

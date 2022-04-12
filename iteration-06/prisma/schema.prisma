@@ -67,5 +67,36 @@ model ProductPrice {
 }
 
 // TODO: Write the TASK 1 models here
+model ProductReview {
+  id             String       @id @default(uuid())
+  isPositive     Boolean
+  createdAt      DateTime
+  description    String
+
+  product      Product        @relation(fields: [productId], references: [id])
+  productId    String
+  user       User             @relation(fields: [userId], references: [id])
+  userId     String
+}
+
+model StoreReview {
+  id             String       @id @default(uuid())
+  isPositive     Boolean
+  createdAt      DateTime
+  description    String
+
+  store      Store            @relation(fields: [storeId], references: [id])
+  storeId    String
+  user       User             @relation(fields: [userId], references: [id])
+  userId     String
+}
+
+model User {
+  id             String       @id @default(uuid())
+  username       String
+
+  productReviews ProductReview[]
+  storeReviews   StoreReview[]
+}
 // If necessary, you can add relations in the original model above;
 // only **append** to the existing model, do not change any functionality (or the tests won't work)

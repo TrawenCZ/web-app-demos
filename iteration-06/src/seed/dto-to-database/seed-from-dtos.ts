@@ -1,6 +1,6 @@
 import prisma from "../../client";
 import { Result } from "@badrap/result";
-import type SeedFileStructure from "../../types/data-transfer-objects";
+import type SeedFileStructure, {CategoryDTO} from "../../types/data-transfer-objects";
 
 /**
  * This function connects to the database and seeds it with the loaded data
@@ -9,6 +9,16 @@ import type SeedFileStructure from "../../types/data-transfer-objects";
  * @returns - `Result.ok(true)` if successful
  *          - `Result.err(_)` otherwise
  */
+
+const createCategory = async (category: CategoryDTO) => {
+  const currentCategory = await prisma.category.create({
+    data: {
+      name: category.name,
+      picture: category.picture,
+    },
+  });
+}
+
 const seedDb = async (
   yamlParsed: SeedFileStructure
 ): Promise<Result<boolean>> => {
@@ -38,11 +48,54 @@ const seedDb = async (
       ...yamlParsed.categories.map((category) => {
         return prisma.category.create({
           data: {
-            ...category,
+            name: category.name,
+            picture: category.picture,
           },
         });
       }),
 
+      ...yamlParsed.products.map((product) => {
+        return prisma.product.create({
+          data: {
+            name: product.name,
+            description: product.description,
+            categories: {
+              connect: [{id: product.categories}]
+            }
+          },
+        });
+      }),
+
+      ...yamlParsed.productPhotos.map((productPhoto) => {
+        return prisma.productPhoto.create({
+          data: {
+            isMain: productPhoto.isMain,
+            source: productPhoto.source,
+            productId: {
+              connect: [{id: productPhoto.productId}]
+            }
+
+          },
+        });
+      }),
+
+      ...yamlParsed.stores.map((store) => {
+        return prisma.store.create({
+          data: {
+            name: store.name,
+            eshopAddress: store.eshopAddress,
+          },
+        });
+      }),
+
+      ...yamlParsed.storeProducts.map((storeProduct) => {
+        return prisma.storeProduct.create({
+          data: {
+            productId: storeProduct.productId,
+            storeId: storeProduct.storeId,
+          },
+        });
+      }),
       /* continue yourself - continue in the order that the data is stored
        * in the file
        * (to create associations to existing records, use the `connect` prisma method)
