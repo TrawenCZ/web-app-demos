@@ -25,6 +25,7 @@ model Product {
   photos      ProductPhoto[]
   categories  Category[]
   inStores    StoreProduct[]
+  reviews     ProductReview[]
 }
 
 model ProductPhoto {
@@ -42,6 +43,7 @@ model Store {
   logo         String?
 
   products StoreProduct[]
+  reviews  StoreReview[]
 }
 
 model StoreProduct {

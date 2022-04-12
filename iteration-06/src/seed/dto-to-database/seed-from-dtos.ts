@@ -1,6 +1,7 @@
 import prisma from "../../client";
 import { Result } from "@badrap/result";
-import type SeedFileStructure, {CategoryDTO} from "../../types/data-transfer-objects";
+import type SeedFileStructure from "../../types/data-transfer-objects";
+import type { CategoryDTO } from "../../types/data-transfer-objects";
 
 /**
  * This function connects to the database and seeds it with the loaded data
@@ -9,15 +10,6 @@ import type SeedFileStructure, {CategoryDTO} from "../../types/data-transfer-obj
  * @returns - `Result.ok(true)` if successful
  *          - `Result.err(_)` otherwise
  */
-
-const createCategory = async (category: CategoryDTO) => {
-  const currentCategory = await prisma.category.create({
-    data: {
-      name: category.name,
-      picture: category.picture,
-    },
-  });
-}
 
 const seedDb = async (
   yamlParsed: SeedFileStructure
@@ -45,7 +37,7 @@ const seedDb = async (
        */
 
       // seed categories - model example
-      ...yamlParsed.categories.map((category) => {
+      ...yamlParsed.categories.map((category: CategoryDTO) => {
         return prisma.category.create({
           data: {
             name: category.name,
@@ -59,9 +51,6 @@ const seedDb = async (
           data: {
             name: product.name,
             description: product.description,
-            categories: {
-              connect: [{id: product.categories}]
-            }
           },
         });
       }),
@@ -71,10 +60,7 @@ const seedDb = async (
           data: {
             isMain: productPhoto.isMain,
             source: productPhoto.source,
-            productId: {
-              connect: [{id: productPhoto.productId}]
-            }
-
+            productId: productPhoto.productId,
           },
         });
       }),
@@ -96,6 +82,8 @@ const seedDb = async (
           },
         });
       }),
+
+
       /* continue yourself - continue in the order that the data is stored
        * in the file
        * (to create associations to existing records, use the `connect` prisma method)

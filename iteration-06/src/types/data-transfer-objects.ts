@@ -39,7 +39,7 @@ export interface StoreDTO {
 export interface StoreProductDTO {
   storeId: string;
   productId: string;
-  prices: PriceDTO;
+  prices: PriceDTO[];
 }
 
 export interface PriceDTO {
