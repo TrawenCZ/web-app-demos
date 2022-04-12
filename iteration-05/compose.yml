@@ -2,13 +2,12 @@ version: '3.3'
 
 volumes:
   database-storage:
-  web:
 
 services:
   web:
     image: nginx:alpine
     volumes:
-      - web:/usr/share/nginx/html:ro
+      - ./web:/usr/share/nginx/html:ro
     ports:
       - "127.0.0.1:8083:80"
   admin:
@@ -16,7 +15,7 @@ services:
     ports:
       - "127.0.0.1:8084:8080"
   database:
-    image: postgres:latest
+    image: postgres:alpine
     environment:
       POSTGRES_DB: my-app
       POSTGRES_PASSWORD: ILovePB138
