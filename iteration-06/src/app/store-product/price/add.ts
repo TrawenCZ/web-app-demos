@@ -31,6 +31,59 @@ export const addProductPrice = async (
    * Hint: There is an operation which updates OR creates a record when the record is not found.
    *       Find it in the Prisma documentation and use it.
    */
+  try {
+    const product = await prisma.product.findUnique({
+      where : {
+        id : productId
+      }
+    })
+    const store = await prisma.store.findUnique({
+      where : {
+        id : storeId
+      }
+    })
 
-  return Result.err();
+    if (product === null || store === null) {
+      throw new Error();
+    }
+
+    const newProductPrice = await prisma.productPrice.create({
+      data : {
+        storeProduct : {
+          connectOrCreate : {
+            create : {
+              product : {
+                connect : { id : productId }
+              },
+              store : {
+                connect: { id : storeId }
+              }
+            },
+            where : {
+              productId_storeId : {productId: productId, storeId : storeId},
+            }
+          }
+        },
+        price : newPrice.price,
+        validFrom : newPrice.validFrom,
+        currency : newPrice.currency
+      },
+      include : {
+        storeProduct: {
+          include : {
+            product : true,
+            store : true,
+            prices : {
+              orderBy: {
+                price : "desc"
+              }
+            }
+          }
+        }
+      }
+    })
+    return Result.ok(newProductPrice.storeProduct)
+  } catch (e) {
+    return Result.err(Error("Could not add a price due to an unexpected error"));
+  }
 };

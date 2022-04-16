@@ -20,9 +20,47 @@ export const addProductToCategory = async (
   productId: string,
   categoryId: string
 ): ProductAddCategoryResult => {
-  /**
-   * @todo
-   */
+  try {
+    const product = await prisma.product.findUnique({
+      where : {
+        id : productId
+      }
+    })
+    const category = await prisma.category.findUnique({
+      where : {
+        id : categoryId
+      }
+    })
 
-  return Result.err();
+    if (category === null || product === null) {
+      throw new Error();
+    }
+
+    const updatedProduct = await prisma.product.update({
+      where: {
+        id: productId,
+      },
+      data : {
+        categories : {
+          connect : {
+            id : categoryId
+          }
+        }
+      },
+      include : {
+        categories: {
+          orderBy: {
+            name : "asc"
+          }
+        }
+      }
+    })
+
+
+    return Result.ok(updatedProduct);
+  } catch (e) {
+    return Result.err(Error("Could not add a product to the category due to an unexpected error"));
+  }
+
+
 };

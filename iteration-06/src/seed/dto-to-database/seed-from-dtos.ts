@@ -15,6 +15,7 @@ const seedDb = async (
   yamlParsed: SeedFileStructure
 ): Promise<Result<boolean>> => {
   try {
+    console.log(yamlParsed)
     /* Transactions are used to ensure either ALL queries in the array
      * are executed correctly, or none at all.
      * This maintains the consistency of the database.
@@ -40,6 +41,7 @@ const seedDb = async (
       ...yamlParsed.categories.map((category: CategoryDTO) => {
         return prisma.category.create({
           data: {
+            id: category.id,
             name: category.name,
             picture: category.picture,
           },
@@ -49,8 +51,14 @@ const seedDb = async (
       ...yamlParsed.products.map((product) => {
         return prisma.product.create({
           data: {
+            id: product.id,
             name: product.name,
             description: product.description,
+            categories: {
+              connect: product.categories.map((category) => {
+                return {id: category.categoryId};
+              })
+            }
           },
         });
       }),
@@ -60,7 +68,9 @@ const seedDb = async (
           data: {
             isMain: productPhoto.isMain,
             source: productPhoto.source,
-            productId: productPhoto.productId,
+            product: {
+              connect: {id: productPhoto.productId}
+            },
           },
         });
       }),
@@ -68,6 +78,7 @@ const seedDb = async (
       ...yamlParsed.stores.map((store) => {
         return prisma.store.create({
           data: {
+            id: store.id,
             name: store.name,
             eshopAddress: store.eshopAddress,
           },
@@ -77,11 +88,25 @@ const seedDb = async (
       ...yamlParsed.storeProducts.map((storeProduct) => {
         return prisma.storeProduct.create({
           data: {
-            productId: storeProduct.productId,
-            storeId: storeProduct.storeId,
+            product: {
+              connect: {id: storeProduct.productId}
+            },
+            store: {
+              connect: {id: storeProduct.storeId},
+            },
+            prices: {
+              create: storeProduct.prices.map((price) => {
+                return {
+                  validFrom: price.validFrom,
+                  price: price.price,
+                  currency: price.currency
+                }
+              })
+            }
           },
         });
       }),
+
 
 
       /* continue yourself - continue in the order that the data is stored

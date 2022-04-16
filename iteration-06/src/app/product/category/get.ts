@@ -19,9 +19,23 @@ import type { ProductGetResult } from "../../../types/return-types";
 export const getProductsByCategory = async (
   categories: string[]
 ): ProductGetResult => {
-  /**
-   * @todo
-   */
-
-  return Result.err();
+  try {
+    const data = await prisma.product.findMany({
+        where: {
+          categories: {
+            some: {
+              id: {
+                in : categories
+              }
+            }
+          }
+        },
+        orderBy : {
+          name : "asc"
+        }
+      })
+    return Result.ok(data);
+  } catch (e) {
+    return Result.err(Error("Unspecified error"));
+  }
 };

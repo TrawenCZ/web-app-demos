@@ -17,9 +17,30 @@ import { StoreGetResult } from "../../../types/return-types";
 export const getStoresThatSellProduct = async (
   productId: string
 ): StoreGetResult => {
-  /**
-   * @todo
-   */
+  try {
+    if (prisma.storeProduct === undefined) {
+      throw new Error();
+    }
+    const storeProducts = await prisma.storeProduct.findMany({
+      where: {
+        productId : productId
+      },
+      include : {
+        store : true
+      },
+      orderBy : {
+        store: {
+          name : "asc"
+        }
+      }
+    })
 
-  return Result.err();
+    return Result.ok(storeProducts.map((storeProduct) => {
+      return storeProduct.store;
+    }))
+  } catch (e) {
+    return Result.err(Error("Unspecified error"));
+  }
+
+
 };

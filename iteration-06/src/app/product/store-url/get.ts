@@ -18,9 +18,41 @@ import type { ProductGetResult } from "../../../types/return-types";
 export const getProductsByStoreURLs = async (
   storeURLs: string[]
 ): ProductGetResult => {
-  /**
-   * @todo
-   */
+  try {
+    if (prisma.store === undefined || prisma.product === undefined) {
+      throw new Error();
+    }
+    const stores = await prisma.store.findMany({
+      where : {
+        eshopAddress : {
+          in : storeURLs
+        }
+      },
+      include : {
+        products : true
+      }
+    })
 
-  return Result.err();
+    let productIds: string[] = [];
+    for (const store of stores) {
+      for (const storeProduct of store.products) {
+        productIds.push(storeProduct.productId);
+      }
+    }
+
+    const products = await prisma.product.findMany({
+      where : {
+        id : {
+          in: productIds
+        }
+      },
+      orderBy : {
+        name : "asc"
+      }
+    })
+
+    return Result.ok(products);
+  } catch (e) {
+    return Result.err(Error("Unspecified error"));
+  }
 };
