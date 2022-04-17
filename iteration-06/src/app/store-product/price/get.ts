@@ -38,7 +38,7 @@ export const getProductsByPrice = async (
    *        has the maximal value a number can have
    *      - if the min price is not defined, 0 should be a sufficient placeholder
    */
-
+  throw new Error();
   try {
     if (prisma.storeProduct === undefined || price.currency === undefined) {
       throw new Error();
@@ -72,8 +72,8 @@ export const getProductsByPrice = async (
     })
 
     let storeProductIds = storeProducts.map((storeProduct) => {
-      if (storeProduct.prices[0] !== undefined && price.maxPrice !== undefined && price.minPrice !== undefined &&
-          storeProduct.prices[0].price <= price.maxPrice
+      if (storeProduct.prices[0] !== undefined && price.maxPrice !== undefined && price.minPrice !== undefined
+          && storeProduct.prices[0].price <= price.maxPrice
           && storeProduct.prices[0].price >= price.minPrice
           && storeProduct.prices[0].currency === price.currency) {
         return storeProduct.id;

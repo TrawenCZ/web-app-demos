@@ -40,7 +40,7 @@ const getProductsByPrice = async (price) => {
      *      - if the min price is not defined, 0 should be a sufficient placeholder
      */
     try {
-        if (client_1.default.storeProduct === undefined) {
+        if (client_1.default.storeProduct === undefined || price.currency === undefined) {
             throw new Error();
         }
         if (price.maxPrice === undefined) {
@@ -57,30 +57,30 @@ const getProductsByPrice = async (price) => {
                             lte: price.maxPrice,
                             gte: price.minPrice
                         }
-                    }
+                    },
                 }
             },
             include: {
                 product: true,
                 prices: {
                     orderBy: {
-                        validFrom: "asc"
+                        validFrom: "desc"
                     },
                     take: 1
                 }
             }
         });
-        let storeProductIds = new Array();
-        for (const storeProduct of storeProducts) {
-            if (storeProduct.prices[0] !== undefined &&
-                (storeProduct.prices[0].price > price.maxPrice
-                    || storeProduct.prices[0].price < price.minPrice)) {
-                continue;
+        let storeProductIds = storeProducts.map((storeProduct) => {
+            if (storeProduct.prices[0] !== undefined && price.maxPrice !== undefined && price.minPrice !== undefined
+                && storeProduct.prices[0].price <= price.maxPrice
+                && storeProduct.prices[0].price >= price.minPrice
+                && storeProduct.prices[0].currency === price.currency) {
+                return storeProduct.id;
             }
             else {
-                storeProductIds.push(storeProduct.id);
+                return "";
             }
-        }
+        });
         storeProducts = await client_1.default.storeProduct.findMany({
             where: {
                 id: {
@@ -91,9 +91,14 @@ const getProductsByPrice = async (price) => {
                 product: true,
                 prices: {
                     orderBy: {
-                        validFrom: "asc"
+                        validFrom: "desc"
                     },
                     take: 1
+                }
+            },
+            orderBy: {
+                product: {
+                    name: "asc"
                 }
             }
         });
