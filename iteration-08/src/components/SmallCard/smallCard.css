@@ -1,0 +1,47 @@
+.card-wrapper {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--default-background-color);
+    padding: 2rem 5rem;
+}
+
+.welcome-message {
+    display: flex;
+    justify-content: center;
+    padding: 1.5rem 0;
+    font-size: 2rem;
+}
+
+.card-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    place-content: center;
+    gap: 1rem;
+}
+
+.small-card {
+    display: flex;
+    width: 20rem;
+    height: 5rem;
+    align-items: center;
+    border-radius: 0.5rem;
+
+    background-color: var(--hover-background-color);
+}
+
+.image-container {
+    flex-shrink: 0;
+    height: 100%;
+    width: 5rem;
+}
+
+.image--bordered {
+    border-top-left-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+}
+
+.title {
+    padding: 0.5rem;
+    white-space: normal;
+}
