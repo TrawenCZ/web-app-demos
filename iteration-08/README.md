@@ -17,7 +17,6 @@ If you need any help, either write under this issue or write in the `#iteration-
 - Whole project apart from some configuration is located in `src/components` folder.
 - Each component you have to create is located in an individual folder.
 - Each folder contains an HTML file with the structure of the component and the required CSS files.
-- **You must use CSS modules for styling.**
 - You do not need to modify `.stories.tsx` files.
 
 ## Requirements
