@@ -1,5 +1,5 @@
 import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { CurrentSong } from './CurrentSong';
 
@@ -8,7 +8,7 @@ export default {
   component: CurrentSong,
 } as ComponentMeta<typeof CurrentSong>;
 
-const Template: ComponentStory<typeof CurrentSong> = (args) => <CurrentSong {...args} />;
+const Template: ComponentStory<typeof CurrentSong> = () => <CurrentSong />;
 
 export const NGGYU = Template.bind({});
 NGGYU.args = {

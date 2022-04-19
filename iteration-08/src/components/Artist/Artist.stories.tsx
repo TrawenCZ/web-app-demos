@@ -8,7 +8,7 @@ export default {
   component: Artist,
 } as ComponentMeta<typeof Artist>;
 
-const Template: ComponentStory<typeof Artist> = (args) => <Artist {...args} />;
+const Template: ComponentStory<typeof Artist> = () => <Artist />;
 
 export const GlassAnimals = Template.bind({});
 GlassAnimals.args = {
