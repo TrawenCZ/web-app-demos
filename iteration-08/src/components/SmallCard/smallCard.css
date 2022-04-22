@@ -30,7 +30,7 @@
     background-color: var(--hover-background-color);
 }
 
-.image-container {
+.image-container--wide {
     flex-shrink: 0;
     height: 100%;
     width: 5rem;
