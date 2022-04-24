@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { object, date, string, boolean, number, ValidationError } from 'yup';
+import { object, date, string, number, ValidationError } from 'yup';
 import prisma from '../client';
 
 /**
@@ -8,7 +8,7 @@ import prisma from '../client';
 const reservationSchema = object({
   from : date().required(),
   to : date().required(),
-  guestCount : number().required(),
+  guestCount : number().min(1).required(),
   accommodationId : string().required(),
   userId: string().required()
 });
@@ -44,13 +44,72 @@ export const pay = async (req: Request, res: Response) => {
 export const make = async (req: Request, res: Response) => {
   try {
     const data = await reservationSchema.validate(req.body);
-    if (data.guestCount < 1) {
+    if (data.from >= data.to) {
       return res.status(400).send({
         status: "error",
         data: {},
-        message: "There must be at least one guest"
+        message: "'from' argument must be before 'to' argument"
       });
     }
+    if (data.from < new Date()) {
+      return res.status(400).send({
+        status: "error",
+        data: {},
+        message: "Reservation must be in future"
+      });
+    }
+
+    const user = await prisma.user.findUnique({
+      where : {
+        id : data.userId
+      }
+    })
+
+    if (!user) {
+      return res.status(400).send({
+        status: "error",
+        data: {},
+        message: "User does not exist"
+      });
+    }
+
+    const reservation = await prisma.reservations.findFirst({
+      where : {
+        accomodationId : data.accommodationId,
+        isPaid: true,
+        OR : [
+            {
+            from : {
+              gte : data.from,
+              lte : data.to
+            },
+          },
+          {
+            to : {
+              lte : data.to,
+              gte : data.from
+          }
+          },
+          {
+            from: {
+              lte: data.from
+            },
+            to : {
+              gte : data.to
+            }
+          }
+        ]
+      }
+    })
+
+    if (reservation) {
+      return res.status(400).send({
+        status: "error",
+        data: {},
+        message: "Already reserved at this time range"
+      });
+    }
+
     const request = await prisma.reservations.create({
       data : {
         from : data.from,
@@ -100,7 +159,7 @@ export const list = async (req: Request, res: Response) => {
   });
 
   return res.send({
-    status: "sucess",
+    status: "success",
     data: requests
   })
 }

@@ -1,5 +1,6 @@
 import express from 'express'
-import { accommodations, reservations } from './resources'
+import { accommodations, reservations, users } from './resources'
+import path from "path";
 
 const api = express()
 
@@ -8,6 +9,9 @@ const api = express()
  */
 api.use(express.json());
 api.use(express.urlencoded({ extended: true }));
+
+api.set("views", path.join(__dirname, "views"));
+api.set("view engine", "pug");
 
 /**
  * Serve static content from public directory for images
@@ -20,26 +24,41 @@ api.use(express.static("public"));
 api.get('/', (req, res) => res.send({
   status: "success",
   data: {},
-  message: "Welcome to our API"
+  message: "Welcome to my API"
 }));
 
 /**
  * Resource accommodations
  */
 api.put('/api/accommodations/:id', accommodations.update);
-api.get('/api/accommodations', accommodations.list);
 api.post('/api/accommodations', accommodations.store);
-api.get('/api/accommodations', accommodations.get);
+api.get('/api/accommodations', accommodations.list);
 
 /**
  * Resource reservations
  */
-api.put('/api/reservations', reservations.make)
-api.post('/api/reservations/:id', reservations.pay);
+api.post('/api/reservations', reservations.make)
+api.put('/api/reservations/:id', reservations.pay);
 api.delete('/api/reservations/:id', reservations.cancel);
+api.get('/api/reservations', reservations.list)
+
+api.get('/api/users', users.list)
+
+
+api.get("/accommodations/:id", async (req, res) => {
+  const params = await accommodations.pug(req.params.id);
+  if (!params) {
+    return res.status(400).send({
+      status: "error",
+      data: {},
+      message: "Invalid id parameter"
+    });
+  }
+  res.render("accommodation", params);
+});
 
 /**
  * Start listening on connections
  */
 const port = process.env.PORT || 3000
-api.listen(port, () => console.log(`Example app listening on port ${port}`))
+api.listen(port, () => console.log(`App listening on port ${port}`))

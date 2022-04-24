@@ -1,0 +1,31 @@
+doctype html
+head
+    meta(http-equiv='Content-Type' content='text/html; charset=UTF-8')
+    link(rel='icon' type='image/svg+xml' href='assets/favicon.svg')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    title AirBnb
+    link(rel='stylesheet' href='assets/semantic.min.css')
+    style(type='text/css').
+        .app {
+            padding: 5rem 0;
+        }
+#root
+    .ui.main.container.text.app
+        .ui.secondary.menu
+            a.item(href='index.html') Home
+        .accomodation-page.ui.one.column.grid
+            .column.wide
+                .ui.fluid.card
+                    .image
+                        img(src='assets/' + mainPhoto)
+                    .content
+                        .header #{name}
+                        .meta
+                            span.right.floated.time #{addedAt.toLocaleString()}
+                            span.category #{location}
+                            span.price $#{price}/night
+                        .description #{description}
+                    .extra.content
+                        .right.floated.author
+                            img.ui.avatar.image(src='assets/' + host.avatar)
+                            span #{host.name}

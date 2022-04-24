@@ -1,17 +1,6 @@
-import { object, string, number, date, ValidationError, boolean } from 'yup';
-import { Request, Response } from 'express'
+import {number, object, string, ValidationError} from 'yup';
+import {Request, Response} from 'express'
 import prisma from '../client';
-
-
-export const list = async (req: Request, res: Response) => {
-
-  const accommodations = await prisma.accomodation.findMany();
-
-  return res.send({
-    status: "success",
-    data: accommodations
-  })
-}
 
 const accommodationSchema = object({
   name: string().required(),
@@ -19,7 +8,6 @@ const accommodationSchema = object({
   mainPhoto: string().required(),
   userId: string().required(),
   location: string().required(),
-  addedAt: date().required(),
   price: number().required()
 });
 
@@ -27,8 +15,33 @@ const accommodationSchema = object({
 export const store = async (req: Request, res: Response) => {
   try {
     const data = await accommodationSchema.validate(req.body);
+
+    const user = await prisma.user.findUnique({
+      where : {
+        id : data.userId
+      }
+    })
+
+    if (!user) {
+      return res.status(400).send({
+        status: "error",
+        data: {},
+        message: "User does not exist"
+      });
+    }
+
     const accommodation = await prisma.accomodation.create({
-      data
+      data : {
+        name : data.name,
+        description : data.description,
+        mainPhoto : data.mainPhoto,
+        location : data.location,
+        price : data.price,
+        addedAt : new Date(),
+        host : {
+          connect : { id : data.userId }
+        }
+      }
     });
 
     return res.status(201).send({
@@ -85,17 +98,9 @@ export const update = async (req: Request, res: Response) => {
   }
 }
 
-export const get = async (req: Request, res: Response) => {
-  if (req.query.price === undefined) {
-    return res.status(400).send({
-      status: "sucess",
-      data: {},
-      message: "Query price is missing"
-    })
-  }
-  const bottomLimit = (<any> req.query.price).gte || 0
-  const upperLimit = (<any> req.query.price).lte || Number.MAX_SAFE_INTEGER
-
+export const list = async (req: Request, res: Response) => {
+  const bottomLimit = +(<any> req.query.price)?.gte || 0
+  const upperLimit = +(<any> req.query.price)?.lte || Number.MAX_SAFE_INTEGER
 
   const data = await prisma.accomodation.findMany({
     where: {
@@ -110,4 +115,15 @@ export const get = async (req: Request, res: Response) => {
     status: "success",
     data: data
   })
+}
+
+export const pug = async (id: string) => {
+  return await prisma.accomodation.findUnique({
+    where: {
+      id: id
+    },
+    include : {
+      host : true
+    }
+  });
 }

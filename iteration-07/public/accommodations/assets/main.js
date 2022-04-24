@@ -1,0 +1,4 @@
+import __vite__cjsImport0_react from "/node_modules/.vite/react.js?v=26f02e16"; const React = __vite__cjsImport0_react.__esModule ? __vite__cjsImport0_react.default : __vite__cjsImport0_react;
+import __vite__cjsImport1_reactDom from "/node_modules/.vite/react-dom.js?v=26f02e16"; const ReactDOM = __vite__cjsImport1_reactDom.__esModule ? __vite__cjsImport1_reactDom.default : __vite__cjsImport1_reactDom;
+import App from "/src/App.tsx?t=1649603612501";
+ReactDOM.render(/* @__PURE__ */ React.createElement(React.StrictMode, null, /* @__PURE__ */ React.createElement(App, null)), document.getElementById("root"));
