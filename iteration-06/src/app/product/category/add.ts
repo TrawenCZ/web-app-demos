@@ -21,21 +21,6 @@ export const addProductToCategory = async (
   categoryId: string
 ): ProductAddCategoryResult => {
   try {
-    const product = await prisma.product.findUnique({
-      where : {
-        id : productId
-      }
-    })
-    const category = await prisma.category.findUnique({
-      where : {
-        id : categoryId
-      }
-    })
-
-    if (category === null || product === null) {
-      throw new Error();
-    }
-
     const updatedProduct = await prisma.product.update({
       where: {
         id: productId,
@@ -55,7 +40,6 @@ export const addProductToCategory = async (
         }
       }
     })
-
 
     return Result.ok(updatedProduct);
   } catch (e) {

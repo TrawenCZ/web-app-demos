@@ -19,31 +19,14 @@ export const getProductsByStoreURLs = async (
   storeURLs: string[]
 ): ProductGetResult => {
   try {
-    if (prisma.store === undefined || prisma.product === undefined) {
-      throw new Error();
-    }
-    const stores = await prisma.store.findMany({
-      where : {
-        eshopAddress : {
-          in : storeURLs
-        }
-      },
-      include : {
-        products : true
-      }
-    })
-
-    let productIds: string[] = [];
-    for (const store of stores) {
-      for (const storeProduct of store.products) {
-        productIds.push(storeProduct.productId);
-      }
-    }
-
     const products = await prisma.product.findMany({
       where : {
-        id : {
-          in: productIds
+        inStores : {
+          some : {
+            store : {
+              eshopAddress: { in : storeURLs }
+            }
+          }
         }
       },
       orderBy : {

@@ -7,7 +7,7 @@ entity Category {
     * id: <<autoincrement>>
     ---
     * name: Text
-    * description: Text
+    * picture : Text
 }
 
 entity Product {
@@ -35,11 +35,15 @@ entity Store {
 
 entity StoreProduct {
     * id: <<autoincrement>>
+    ---
+    * storeId : Text
+    * productId : Text
 }
 
 entity ProductPrice {
     * id: <<autoincrement>>
     ---
+    * storeProductId : Text
     * validFrom : DateTime
     * price : Float
     * currency : Text
@@ -48,6 +52,8 @@ entity ProductPrice {
 entity ProductReview {
     * id: <<autoincrement>>
     ---
+    * productId : Text
+    * userId : Text
     * isPositive : Boolean
     * createdAt : DateTime
     * description : Text
@@ -56,6 +62,8 @@ entity ProductReview {
 entity StoreReview {
     * id: <<autoincrement>>
     ---
+    * storeId : Text
+    * userId : Text
     * isPositive : Boolean
     * createdAt : DateTime
     * description : Text
@@ -67,7 +75,13 @@ entity User {
     * username : Text
 }
 
-Category }|..o{ Product
+entity ListOfCategories {
+    * productId : Text
+    * categoryId : Text
+}
+
+Category ||..o{ ListOfCategories
+ListOfCategories }o..|| Product
 Product ||..|{ ProductPhoto
 Product ||..o{ StoreProduct
 Store ||..o{ StoreProduct

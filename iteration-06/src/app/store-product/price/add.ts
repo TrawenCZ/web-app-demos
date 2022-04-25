@@ -32,21 +32,6 @@ export const addProductPrice = async (
    *       Find it in the Prisma documentation and use it.
    */
   try {
-    const product = await prisma.product.findUnique({
-      where : {
-        id : productId
-      }
-    })
-    const store = await prisma.store.findUnique({
-      where : {
-        id : storeId
-      }
-    })
-
-    if (product === null || store === null) {
-      throw new Error();
-    }
-
     const newProductPrice = await prisma.productPrice.create({
       data : {
         storeProduct : {

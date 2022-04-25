@@ -18,26 +18,20 @@ export const getStoresThatSellProduct = async (
   productId: string
 ): StoreGetResult => {
   try {
-    if (prisma.storeProduct === undefined) {
-      throw new Error();
-    }
-    const storeProducts = await prisma.storeProduct.findMany({
-      where: {
-        productId : productId
-      },
-      include : {
-        store : true
+    const stores = await prisma.store.findMany({
+      where : {
+        products : {
+          some : {
+            productId : productId
+          }
+        }
       },
       orderBy : {
-        store: {
-          name : "asc"
-        }
+        name : "asc"
       }
-    })
 
-    return Result.ok(storeProducts.map((storeProduct) => {
-      return storeProduct.store;
-    }))
+    })
+    return Result.ok(stores);
   } catch (e) {
     return Result.err(Error("Unspecified error"));
   }

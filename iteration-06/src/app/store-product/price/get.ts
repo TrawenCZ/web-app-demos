@@ -39,9 +39,6 @@ export const getProductsByPrice = async (
    *      - if the min price is not defined, 0 should be a sufficient placeholder
    */
   try {
-    if (prisma.storeProduct === undefined) {
-      throw new Error();
-    }
     if (price.maxPrice === undefined) {
       price.maxPrice = Number.MAX_SAFE_INTEGER;
     }
@@ -70,40 +67,15 @@ export const getProductsByPrice = async (
       }
     })
 
-    let storeProductIds = storeProducts.map((storeProduct) => {
+    let storeProductTest = storeProducts.filter((storeProduct) => {
       const currencyCheck = price.currency ? storeProduct.prices[0]?.currency === price.currency : true
-      if (storeProduct.prices[0] !== undefined && price.maxPrice !== undefined && price.minPrice !== undefined
-          && storeProduct.prices[0].price <= price.maxPrice
-          && storeProduct.prices[0].price >= price.minPrice
-          && currencyCheck) {
-        return storeProduct.id;
-      } else {
-        return "";
-      }
+      return storeProduct.prices[0] !== undefined && price.maxPrice !== undefined && price.minPrice !== undefined
+          && storeProduct.prices[0]?.price <= price.maxPrice
+          && storeProduct.prices[0]?.price >= price.minPrice
+          && currencyCheck;
     })
 
-    storeProducts = await prisma.storeProduct.findMany({
-      where : {
-        id : {
-          in : storeProductIds
-        }
-      },
-      include : {
-        product : true,
-        prices : {
-          orderBy: {
-            validFrom: "desc"
-          },
-          take: 1
-        }
-      },
-      orderBy : {
-        product : {
-          name : "asc"
-        }
-      }
-    })
-    return Result.ok(storeProducts)
+    return Result.ok(storeProductTest)
   } catch (e) {
     return Result.err(Error("Unspecified error"))
   }
