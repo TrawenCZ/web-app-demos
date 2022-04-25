@@ -1,6 +1,12 @@
 import prisma from "../../client";
 import { Result } from "@badrap/result";
 import type SeedFileStructure from "../../types/data-transfer-objects";
+import type {
+    PriceDTO, ProductDTO,
+    ProductPhotoDTO,
+    StoreDTO,
+    StoreProductDTO
+} from "../../types/data-transfer-objects";
 import type { CategoryDTO } from "../../types/data-transfer-objects";
 
 /**
@@ -48,7 +54,7 @@ const seedDb = async (
         });
       }),
 
-      ...yamlParsed.products.map((product) => {
+      ...yamlParsed.products.map((product: ProductDTO) => {
         return prisma.product.create({
           data: {
             id: product.id,
@@ -63,7 +69,7 @@ const seedDb = async (
         });
       }),
 
-      ...yamlParsed.productPhotos.map((productPhoto) => {
+      ...yamlParsed.productPhotos.map((productPhoto: ProductPhotoDTO) => {
         return prisma.productPhoto.create({
           data: {
             isMain: productPhoto.isMain,
@@ -75,7 +81,7 @@ const seedDb = async (
         });
       }),
 
-      ...yamlParsed.stores.map((store) => {
+      ...yamlParsed.stores.map((store: StoreDTO) => {
         return prisma.store.create({
           data: {
             id: store.id,
@@ -85,7 +91,7 @@ const seedDb = async (
         });
       }),
 
-      ...yamlParsed.storeProducts.map((storeProduct) => {
+      ...yamlParsed.storeProducts.map((storeProduct: StoreProductDTO) => {
         return prisma.storeProduct.create({
           data: {
             product: {
@@ -95,7 +101,7 @@ const seedDb = async (
               connect: {id: storeProduct.storeId},
             },
             prices: {
-              create: storeProduct.prices.map((price) => {
+              create: storeProduct.prices.map((price: PriceDTO) => {
                 return {
                   validFrom: price.validFrom,
                   price: price.price,
