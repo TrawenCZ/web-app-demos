@@ -117,7 +117,7 @@ export const list = async (req: Request, res: Response) => {
   })
 }
 
-export const pug = async (id: string) => {
+export const getOne = async (id: string) => {
   return await prisma.accomodation.findUnique({
     where: {
       id: id
@@ -126,4 +126,8 @@ export const pug = async (id: string) => {
       host : true
     }
   });
+}
+
+export const getAll = async () => {
+  return await prisma.accomodation.findMany();
 }

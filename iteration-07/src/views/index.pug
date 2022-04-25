@@ -1,0 +1,42 @@
+doctype html
+head
+    meta(http-equiv='Content-Type' content='text/html; charset=UTF-8')
+    link(rel='icon' type='image/svg+xml' href='http://localhost:3001/src/favicon.svg')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    title AirBnb
+    link(rel='stylesheet' href='assets/semantic.min.css')
+    style(type='text/css').
+        .app { padding: 5rem 0; }
+#root
+    .ui.main.container.text.app
+        .ui.secondary.menu
+            a.item.active(href='/' aria-current='page') Home
+        h1.ui.header Today&apos;s top pick!
+        .ui.items
+            - var accommodation = accommodations[Math.floor(Math.random()*accommodations.length)]
+            .item
+                .image
+                    img(src='assets/' + accommodation.mainPhoto)
+                .content
+                    a.header(href=accommodation.id)
+                        | #{accommodation.name}
+                    .meta
+                        span.price $#{accommodation.price}/night
+                    .description
+                        span #{accommodation.description}
+                    .extra #{accommodation.location}
+        h1.ui.header List of accommodations
+        .ui.items
+            each accommodation in accommodations
+                .item
+                    .image
+                        img(src='assets/' + accommodation.mainPhoto)
+                    .content
+                        a.header(href=accommodation.id)
+                            | #{accommodation.name}
+                        .meta
+                            span.price $#{accommodation.price}/night
+                        .description
+                            span #{accommodation.description}
+                        .extra #{accommodation.location}
+script(type='module' src='assets/main.js')

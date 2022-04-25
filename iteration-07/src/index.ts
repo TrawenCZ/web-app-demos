@@ -46,7 +46,7 @@ api.get('/api/users', users.list)
 
 
 api.get("/accommodations/:id", async (req, res) => {
-  const params = await accommodations.pug(req.params.id);
+  const params = await accommodations.getOne(req.params.id);
   if (!params) {
     return res.status(400).send({
       status: "error",
@@ -55,6 +55,11 @@ api.get("/accommodations/:id", async (req, res) => {
     });
   }
   res.render("accommodation", params);
+});
+
+api.get("/accommodations", async (req, res) => {
+  const params = await accommodations.getAll();
+  res.render("index", {accommodations : params});
 });
 
 /**

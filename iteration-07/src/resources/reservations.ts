@@ -209,8 +209,8 @@ export const cancel = async (req: Request, res: Response) => {
   });
 
   return res.send({
-    status: "sucess",
+    status: "success",
     data: request,
-    message: "Request removed"
+    message: "Reservation removed"
   })
 }
