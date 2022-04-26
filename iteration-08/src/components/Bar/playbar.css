@@ -1,0 +1,28 @@
+.bar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+    height: 4rem;
+    padding: 0 1rem;
+    background-color: var(--default-background-color);
+}
+
+.bar__play {
+    box-sizing: border-box;
+    height: 3rem;
+    width: 3rem;
+    padding: 1rem;
+    background-color: var(--spotify-color);
+    border-radius: 1.5rem;
+    border: 0;
+}
+
+.bar__follow {
+    padding: 0.5rem;
+    background-color: var(--default-background-color);
+    color: var(--font-color);
+    border-color: var(--follow-border-color);
+    border-radius: 0.5rem;
+}
+

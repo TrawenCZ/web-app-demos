@@ -1,0 +1,59 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    height: 15rem;
+    width: 11rem;
+    background-color: var(--default-background-color);
+    border-radius: 1rem;
+}
+
+.card:hover {
+    background-color: var(--hover-background-color);
+    transition: linear 100ms;
+}
+
+.card:hover .card__play {
+    display: block;
+}
+
+.card__image-wrapper {
+    position: relative;
+    padding: 1rem 1rem 0;
+}
+
+.image--rounded {
+    border-radius: 0.5rem;
+}
+
+.card__play {
+    display: none;
+    position: absolute;
+    bottom: 0.5rem;
+    right: 1.5rem;
+    box-sizing: border-box;
+    height: 3rem;
+    width: 3rem;
+    padding: 1rem;
+    background-color: var(--spotify-color);
+    border-radius: 1.5rem;
+    border: 0;
+}
+
+.image--play {
+    height: 100%;
+}
+
+.card__name {
+    padding: 0 1rem;
+}
+
+.card__description {
+    margin: 0 1rem 1rem;
+    color: var(--font-gray);
+    white-space: normal;
+    overflow: hidden;
+    font-size: 12px;
+}
+
+
+

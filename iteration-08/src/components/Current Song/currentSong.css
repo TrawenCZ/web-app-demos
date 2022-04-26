@@ -1,0 +1,49 @@
+.song {
+    display: flex;
+    flex-direction: row;
+    height: 5rem;
+    width: 22rem;
+    background-color: var(--default-background-color);
+}
+
+.image-wrapper {
+    height: 100%;
+    width: 5rem;
+    flex-shrink: 0;
+}
+
+.image--green {
+    filter: invert(49%) sepia(70%) saturate(520%) hue-rotate(88deg) brightness(101%) contrast(90%);
+}
+
+.song__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0.5rem;
+    margin-right: auto;
+}
+
+.song__name {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+
+.song__artist {
+    color: var(--font-gray);
+}
+
+.button {
+    box-sizing: border-box;
+    height: 1.5rem;
+    width: 1.5rem;
+    margin: 0 0.5rem;
+    place-self: center;
+    flex-shrink: 0;
+    background-color: var(--default-background-color);
+    border: 0;
+}
+
