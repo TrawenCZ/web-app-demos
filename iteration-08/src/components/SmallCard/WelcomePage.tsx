@@ -1,5 +1,6 @@
 import React from 'react';
 import './smallCard.css';
+import SmallCard, { SmallCardProps } from './SmallCard';
 
 export const WelcomePage = () => {
   // eslint-disable-next-line no-unused-vars
@@ -18,7 +19,7 @@ export const WelcomePage = () => {
         Good evening
       </div>
       <div className="card-container">
-        {/* TODO list of GenericCard  */}
+        {Cards.map((props : SmallCardProps) => <SmallCard key={props.photo} {...props} />)}
       </div>
     </div>
   );

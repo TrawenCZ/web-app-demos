@@ -8,7 +8,7 @@ export default {
   component: Card,
 } as ComponentMeta<typeof Card>;
 
-const Template: ComponentStory<typeof Card> = () => <Card />;
+const Template: ComponentStory<typeof Card> = (props) => <Card {...props} />;
 
 export const JarniChill = Template.bind({});
 export const Dopamine = Template.bind({});
