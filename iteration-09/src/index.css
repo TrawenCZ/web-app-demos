@@ -16,3 +16,10 @@ button,
 select {
   font-family: inherit;
 }
+
+.image {
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  border: 5px solid black;
+}
