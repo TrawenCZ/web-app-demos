@@ -1,0 +1,643 @@
+/* Forgive us students, this css is messy 
+   - you can tinker with it and see if you can make it more organized!
+ */
+ :root {
+  /* Colors */
+  --background-primary: #36393f;
+  --background-semi-dark: #2f3136;
+  --background-dark: #292b2f;
+  --background-navigation: var(--background-semi-dark);
+  --background-navigation-hover: #3c3f45;
+  --background-navigation-selected: #42464d;
+  --font-color-primary: #fff;
+  --font-color-nav: #8e9297;
+  --font-color-nav-hover: #c8d0d8;
+  --font-color-nav-muted: #4e535a;
+  --background-message-hover: #32353b;
+  --background-user-input: #40444b;
+  --background-profile-edit-banner: #005eb6;
+  --background-edit-button: var(--background-profile-edit-banner);
+  --background-edit-button-disabled: #669ed3;
+  --border-color: #00000035;
+
+  --size-big: 2rem;
+  --size-standard: 1rem;
+  --size-none: 0rem;
+  --size-small: 0.5rem;
+  --size-tiny: 0.25rem;
+
+  /* Font weight */
+  --fw-standard: 300;
+  --fw-medium: 400;
+  --fw-bold: 700;
+
+  /* Padding */
+  --padding-standard: var(--size-standard);
+  --padding-standard-x: var(--size-none) var(--size-standard);
+  --padding-standard-y: var(--size-standard) var(--size-none);
+
+  --padding-small: var(--size-small);
+  --padding-small-x: var(--size-none) var(--size-small);
+  --padding-small-y: var(--size-small) var(--size-none);
+
+  /* Margins */
+  --margin-standard: var(--size-standard);
+  --margin-standard-x: var(--size-none) var(--size-standard);
+  --margin-standard-y: var(--size-standard) var(--size-none);
+
+  --margin-small: var(--size-small);
+  --margin-small-x: var(--size-none) var(--size-small);
+  --margin-small-y: var(--size-small) var(--size-none);
+
+  /* Border radius */
+  --br-small: 0.33rem;
+  --br-standard: 1rem;
+
+  /* Border */
+  --border-under: 0.125rem solid var(--border-color);
+
+  /* Shadows */
+  --sh-tiny: 0 0.25rem 1rem #00000040;
+  --sh-tiny-hover: 0 0.33rem 1rem #00000050;
+}
+
+a {
+  all: unset;
+}
+
+a:hover {
+  cursor: pointer;
+}
+
+.app {
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  font-weight: var(--fw-standard);
+  color: var(--font-color-primary);
+  background: var(--background-primary);
+  display: grid;
+  grid-template:
+    [row1-start] "navigation main-app" auto [row1-end]
+    / 15rem auto;
+  height: 100vh;
+  min-width: 18rem;
+  overflow: hidden;
+}
+
+.link {
+  color: var(--font-color-primary);
+  text-decoration: none;
+}
+
+.list {
+  list-style-type: none;
+  margin: var(--size-none);
+  padding: var(--size-none);
+}
+
+.heading {
+  margin: var(--size-none);
+  padding: var(--size-none);
+}
+
+.heading--1 {
+  font-size: 2.5rem;
+}
+
+.heading--2 {
+  font-size: 2rem;
+}
+
+.image {
+  width: 100%;
+}
+
+.profile-picture {
+  display: flex;
+  clip-path: circle(50% at center);
+  overflow: hidden;
+}
+
+.profile-picture__image {
+  object-fit: cover;
+}
+
+.controls {
+  display: flex;
+}
+
+.controls__control {
+  all: unset;
+  cursor: pointer;
+  margin: var(--margin-small-x);
+  width: 1rem;
+  height: 1rem;
+  object-fit: cover;
+}
+
+.controls__image {
+  width: 100%;
+}
+
+.header {
+  display: flex;
+  justify-content: start;
+  align-content: center;
+  padding: var(--padding-standard);
+  box-shadow: var(--sh-tiny);
+  border-bottom: var(--border-under);
+}
+
+.button {
+  all: unset;
+  cursor: pointer;
+  padding: var(--size-small) var(--size-standard);
+  border-radius: var(--br-small);
+  font-weight: var(--fw-bold);
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  padding: var(--padding-standard);
+  cursor: pointer;
+}
+
+.profile__info {
+  margin: var(--margin-standard-x);
+  overflow: hidden;
+}
+
+.profile__name, .profile__slug {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.profile__slug {
+  font-size: 0.8rem;
+  font-weight: var(--fw-standard);
+}
+
+.navigation {
+  display: flex;
+  flex-direction: column;
+  background: var(--background-navigation);
+  color: var(--font-color-nav);
+  font-weight: var(--fw-bold);
+  overflow: hidden;
+}
+
+.navigation__server-header {
+  height: 2rem;
+  cursor: pointer;
+}
+
+.navigation__server-header:hover {
+  background: var(--background-navigation-hover);
+  box-shadow: var(--sh-tiny-hover);
+}
+
+.navigation__server-logo {
+  width: 3rem;
+}
+
+.navigation__server-heading {
+  font-size: 2rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.navigation__profile {
+  background: var(--background-dark);
+}
+
+.navigation__profile:hover {
+  background: var(--background-navigation-hover);
+}
+
+.navigation__profile-picture {
+  width: 3rem;
+  height: 3rem;
+}
+
+.categories {
+  padding: var(--padding-standard);
+  flex-grow: 1;
+  overflow: auto;
+}
+
+.channel__image {
+  width: 1rem;
+  margin-right: 0.5rem;
+}
+
+.category {
+  padding: var(--padding-small-y);
+  transition: 0.1s ease;
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-small);
+}
+
+.category__heading {
+  font-size: 1rem;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.category__heading:hover {
+  color: var(--font-color-nav-hover);
+}
+
+.items {
+  display: flex;
+  flex-direction: column;
+}
+
+.category__items {
+  gap: var(--size-tiny);
+}
+
+.item {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  overflow: hidden;
+}
+
+.category__item {
+  line-height: 2rem;
+  padding: var(--padding-small-x);
+  cursor: pointer;
+  border-radius: var(--br-small);
+}
+
+.item__name {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.channel__name {
+  text-transform: lowercase;
+}
+
+.category__item:hover {
+  background: var(--background-navigation-hover);
+  color: var(--font-color-nav-hover);
+}
+
+.category__item--muted {
+  color: var(--font-color-nav-muted);
+}
+
+.category__item--selected {
+  color: var(--font-color-primary);
+  background: var(--background-navigation-selected);
+}
+
+.category__item--selected:hover {
+  color: var(--font-color-primary);
+  background: var(--background-navigation-selected);
+}
+
+.main-window {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.main-channel {
+  flex-direction: column;
+}
+
+.main-channel__header {
+  height: 2rem;
+  z-index: 1;
+}
+
+.main-channel__heading {
+  text-transform: lowercase;
+  margin-left: var(--size-small);
+  font-size: 2rem;
+}
+
+.main-channel__logo {
+  width: 2rem;
+}
+
+.chat {
+  margin-top: auto;
+  padding: var(--size-big) var(--size-none) ;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+}
+
+.chat-start {
+  padding: var(--padding-standard);
+}
+
+.chat-start__heading {
+  font-size: 2rem;
+}
+
+.chat-start__icon {
+  width: 1.5rem;
+  margin: var(--size-none) var(--size-tiny) var(--size-none) var(--size-none);
+}
+
+.message {
+  display: grid;
+  grid-template:
+    [row1-start] "profile-picture sent-by" auto [row1-end]
+    [row2-start] "profile-picture message-content" auto [row2-end]
+    [row3-start] "profile-picture edit" auto [row3-end]
+    / 3.5rem auto;
+  padding: var(--size-small) var(--size-standard);
+  margin-top: var(--size-tiny);
+  max-width: 100%;
+  transition: 0.1s ease;
+  position: relative;
+}
+
+.message:hover {
+  background: var(--background-primary);
+  background: var(--background-message-hover);
+}
+
+.message:hover > .message__controls {
+  display: flex;
+}
+
+.message__sent-by {
+  grid-area: sent-by;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  align-self: center;
+  margin: var(--margin-small);
+}
+
+.message__sender-name {
+  font-size: 1.33rem;
+}
+
+.message__sent-at {
+  font-weight: var(--fw-standard);
+  font-size: 0.8rem;
+}
+
+.message__content {
+  grid-area: message-content;
+  margin: var(--margin-small-x);
+}
+
+.message__edited {
+  font-size: 0.8rem;
+  margin: var(--margin-small-x);
+}
+
+.message__controls {
+  display: none;
+  position: absolute;
+  right: 2rem;
+  top: -0.5rem;
+  border-radius: var(--br-standard);
+  border: 0.125rem solid var(--border-color);
+
+  transition: 0.1s ease;
+  z-index: 1;
+  background: var(--background-semi-dark);
+  padding: var(--padding-small);
+  overflow: hidden;
+}
+
+.message__profile-picture {
+  width: 3rem;
+  height: 3rem;
+}
+
+.message-edit {
+  grid-area: edit;
+  margin: var(--margin-small);
+}
+
+.chat-input {
+  display: flex;
+  height: 2rem;
+  padding: var(--padding-standard-x);
+  box-shadow: 0 -0.5rem 0.5rem var(--background-primary);
+  z-index: 1;
+}
+
+.chat-input__form, .message-edit__form {
+  display: flex;
+  align-items: center;
+  padding: var(--padding-standard);
+  width: 100%;
+  min-height: 1rem;
+  overflow: hidden;
+  border-radius: var(--br-small);
+  background: var(--background-user-input);
+}
+
+.message-edit__form {
+  width: inherit;
+}
+
+
+.chat-input__form {
+  position: relative;
+  top: -1.5rem;
+}
+
+.chat-input__control {
+  width: 1.5rem;
+  cursor: pointer;
+}
+
+.chat-input__text-input, .message-edit__text-input {
+  margin: var(--margin-small-x);
+  background: inherit;
+  border: none;
+  color: var(--font-color-primary);
+  flex-grow: 1;
+  outline: none;
+  min-width: 1rem;
+}
+
+.chat-input__send, .message-edit__send {
+  background: var(--background-semi-dark);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.chat-input__send:hover {
+  background: var(--background-dark);
+}
+
+.main-settings {
+  flex-direction: column;
+}
+
+.main-settings__heading {
+  padding: var(--padding-standard)
+}
+
+.main-settings__content {
+  display: flex;
+  overflow: auto;
+  align-items: center;
+  flex-direction: column;
+  padding: var(--padding-standard-y);
+  gap: 1rem;
+  width: 100%;
+}
+
+.profile-editor {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: max(16rem, 55%);
+  background: var(--background-dark);
+  border-radius: var(--br-standard);
+  /* overflow: hidden; */
+}
+
+.profile-editor__banner {
+  border-radius: var(--size-standard) var(--size-standard) var(--size-none) var(--size-none);
+  height: 5rem;
+  background: var(--background-profile-edit-banner);
+}
+
+.profile-editor__controls {
+  padding: var(--padding-standard);
+}
+
+.profile-editor__profile-picture {
+  height: 5rem;
+  width: 5rem;
+  border-radius: 50%;
+  border: 0.5rem solid var(--background-dark);
+}
+
+.profile-info {
+  position: relative;
+  top: -2rem;
+  display: grid;
+  grid-template: [row1-start] "profile-picture name button" [row1-end]
+  / auto 1fr auto;
+  justify-items: start;
+  align-items: center;
+}
+
+.profile-info__account-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.profile-info__name {
+  text-overflow:ellipsis;
+  font-size: 1.33rem;
+}
+
+.profile-info__allow-edit {
+  background: var(--background-profile-edit-banner);
+  margin-right: var(--size-standard);
+}
+
+.profile-editor__form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  position: relative;
+  top: -1rem;
+  padding: var(--padding-standard);
+  background: var(--background-semi-dark);
+  border-radius: var(--br-standard);
+}
+
+.profile-editor__label {
+  font-weight: var(--fw-medium);
+  text-transform: uppercase;
+}
+
+.profile-editor__input {
+  display: flex;
+  padding: var(--size-small) var(--size-standard);
+  outline: none;
+  background: none;
+  border: none;
+  color: var(--font-color-primary);
+  background: var(--background-primary);
+  border-radius: var(--br-small);
+}
+
+.profile-editor__submit {
+  align-self: flex-end;
+  margin: var(--margin-small-y);
+  background: var(--background-profile-edit-banner);
+  width: fit-content;
+}
+
+.profile-editor__submit--disabled {
+  background: var(--background-edit-button-disabled);
+  width: fit-content;
+  cursor: default;
+}
+
+@media screen and (max-width: 800px) {
+  /* 
+     You didnt think we would hand you the design completely finished, did you?
+     The mobile design is somewhat underwhelming. It was not our intention to design
+     a production ready stylesheet. It should be plenty enough for our purposes though
+   */
+
+  .app {
+    display: grid;
+    grid-template:
+    [row1-start] "main-app" auto [row1-end]
+    / auto;
+  }
+
+  .navigation {
+    display: none;
+  }
+
+  .profile-editor__profile {
+    top: 0rem;
+  }
+
+  .profile-info {
+    display: grid;
+    grid-template: 
+    [row1-start] "profile-picture name" [row1-end]
+    [row2-start] "button button" [row2-end]
+    / auto 1fr;
+    margin-bottom: var(--size-standard);
+  }
+
+  .profile-info__allow-edit {
+    justify-self: end;
+    grid-area: button;
+  }
+
+  .profile-editor__form {
+    top: 0rem;
+  }
+
+  .profile-editor__profile-picture {
+    width: 3rem;
+    height: 3rem;
+  }
+}
