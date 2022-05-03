@@ -8,6 +8,7 @@ html {
 
 body {
   margin: 0;
+  font-family: "Montserrat", sans-serif;
 }
 
 input,
@@ -18,8 +19,49 @@ select {
 }
 
 .image {
-  width: 200px;
-  height: 200px;
+  width: 8rem;
+  height: 8rem;
   overflow: hidden;
-  border: 5px solid black;
+  border: 0.2rem solid black;
 }
+
+.registration__error {
+  color: red;
+}
+
+.text-field--error {
+  border: 0.1rem solid red;
+}
+
+.text-field {
+  margin: 0.7rem 0.2rem;
+  background-color: rgb(239, 239, 239);
+}
+
+.text-field,
+.button {
+  border-radius: 0.4rem;
+  line-height: 1rem;
+  padding: 0.5rem;
+  border: none;
+}
+
+.button {
+  width: fit-content;
+  padding: 0.8rem 2rem;
+  margin: auto;
+}
+.button:hover {
+  cursor: pointer;
+}
+
+.form {
+  display: grid;
+}
+
+.phone-number {
+  display: grid;
+  grid-template-columns: 10rem auto;
+}
+
+

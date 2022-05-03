@@ -93,8 +93,10 @@ export const InputForm = ({nextAction, saveData}: InputFormProps) => {
                 <p className="registration__error">Zip code is required</p>
             )}
 
+
             <label>Phone no*</label>
-            <select className="text-field" {...register("phoneCode")}>
+            <div className="phone-number">
+            <select id="phone-prefix" className="text-field" {...register("phoneCode")}>
                 <option value="czech">+420</option>
                 <option value="slovakia">+421</option>
             </select>
@@ -105,6 +107,7 @@ export const InputForm = ({nextAction, saveData}: InputFormProps) => {
             {errors.phone && (
                 <p className="registration__error">Phone no is required</p>
             )}
+            </div>
 
             <label>Note</label>
             <input

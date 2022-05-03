@@ -2,6 +2,9 @@ import {useState} from "react";
 import {CartContent} from "./components/CartContent";
 import {IFormInput, InputForm, phoneCodeEnum} from "./components/InputForm";
 import {Summary} from "./components/Summary";
+import cart from "./static/cart.json"
+import {CartContentSummary} from "./components/CartContentSummary";
+import {CartSummary} from "./components/CartSummary";
 
 
 export const App = () => {
@@ -12,11 +15,24 @@ export const App = () => {
 
   return <div className="App">
     {step === 0 &&
-    <CartContent nextAction={setStep} />}
+        <>
+          <h2>Step 1: Purchase summary</h2>
+          {cart.products.map((product, index) => {
+            return <CartContent key={index} {...product} />
+          })}
+          <CartContentSummary nextAction={setStep} />
+        </>}
     {step === 1 &&
     <InputForm nextAction={setStep} saveData={saveData} />}
     {step === 2 &&
-        <Summary nextAction={setStep} data={data} />}
+        <>
+          <h2>Step 3: Summary</h2>
+          <h3>Your order</h3>
+          {cart.products.map((product, index) => {
+          return <CartSummary key={index} {...product} />
+          })}
+          <Summary nextAction={setStep} data={data} /></>
+        }
     {step === 3 &&
         <h2>Order has been placed. Thank you for choosing us!</h2>}
   </div>;

@@ -12,7 +12,7 @@ export interface NextActionProps {
 }
 
 
-export const CartContent = ({nextAction}: NextActionProps) => {
+export const CartContent = ({name, price, image, quantity}: CartProps) => {
     const products : CartProps[] = cart.products;
 
     let totalPrice = 0;
@@ -21,20 +21,12 @@ export const CartContent = ({nextAction}: NextActionProps) => {
     }
 
     return <>
-        <h2>Step 1: Purchase summary</h2>
-    {products.map((product) => {
-        return <>
-            <hr/>
-            <h3>{product.name}</h3>
-            <img className="image" src={product.image} alt={product.name}/>
-        <p>Quantity: {product.quantity}</p>
-            <p>Price: {product.price}€/piece</p>
-            <p><strong>{product.price*product.quantity}€</strong></p>
-            <hr/>
-            </>
-    })}
-        <h3>Total: {totalPrice.toFixed(2)}</h3>
         <hr/>
-        <button onClick={() => nextAction(1)}>Next</button>
-        </>
+        <h3>{name}</h3>
+        <img className="image" src={image} alt={name}/>
+        <p>Quantity: {quantity}</p>
+        <p>Price: {price}€/piece</p>
+        <p><strong>{price * quantity}€</strong></p>
+        <hr/>
+    </>
 }
