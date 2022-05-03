@@ -10,7 +10,7 @@ import {CartSummary} from "./components/CartSummary";
 export const App = () => {
   const [step, setStep] = useState<number>(0);
   const [data, saveData] = useState<IFormInput>({name : "undefined", surname : "undefined", street : "undefined",
-    streetNo : "undefined", city : "undefined", zipCode : "undefined", phoneCode : phoneCodeEnum.czech, phone : 0,
+    streetNo : "undefined", city : "undefined", zipCode : 1, phoneCode : "+420", phone : "undefined",
     email : "undefined", note : "undefined"});
 
   return <div className="App">

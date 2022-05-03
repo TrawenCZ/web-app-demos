@@ -5,10 +5,10 @@ interface InputFormProps {
     saveData : Function
 }
 
-export enum phoneCodeEnum {
-    czech = "+420",
-    slovakia = "+421"
-}
+export const phoneCodeEnum = {
+    czech : "+420",
+    slovakia : "+421"
+} as const
 
 export interface IFormInput {
     name : string,
@@ -18,7 +18,7 @@ export interface IFormInput {
     city : string,
     zipCode : number,
     phone : string,
-    phoneCode : phoneCodeEnum,
+    phoneCode : keyof typeof phoneCodeEnum,
     email : string,
     note : string
 }
