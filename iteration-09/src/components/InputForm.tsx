@@ -16,8 +16,8 @@ export interface IFormInput {
     street : string,
     streetNo : string,
     city : string,
-    zipCode : string
-    phone : number,
+    zipCode : number,
+    phone : string,
     phoneCode : phoneCodeEnum,
     email : string,
     note : string
@@ -42,7 +42,7 @@ export const InputForm = ({nextAction, saveData}: InputFormProps) => {
             <label>Name*</label>
             <input
                 className={`text-field ${errors.name && "text-field--error"}`}
-                {...register("name", { required: true })}
+                {...register("name", { required: true , maxLength: 20})}
             />
             {errors.name && (
                 <p className="registration__error">Name is required</p>
@@ -90,7 +90,7 @@ export const InputForm = ({nextAction, saveData}: InputFormProps) => {
                 {...register("zipCode", { required: true, minLength: 5, maxLength: 6})}
             />
             {errors.zipCode && (
-                <p className="registration__error">Zip code is required</p>
+                <p className="registration__error">Zip code is required and has to be a number</p>
             )}
 
 
@@ -105,7 +105,7 @@ export const InputForm = ({nextAction, saveData}: InputFormProps) => {
                 {...register("phone", { required: true, minLength : 9, maxLength : 11})}
             />
             {errors.phone && (
-                <p className="registration__error">Phone no is required</p>
+                <p className="registration__error">Phone no is required and it must have 9 digits</p>
             )}
             </div>
 
