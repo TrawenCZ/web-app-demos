@@ -14,9 +14,10 @@ const reservationSchema = object({
 });
 
 export const pay = async (req: Request, res: Response) => {
+  try {
     const reservation = await prisma.reservations.update({
-      data : {
-        isPaid : true
+      data: {
+        isPaid: true
       },
       where: {
         id: req.params.id
@@ -36,6 +37,13 @@ export const pay = async (req: Request, res: Response) => {
       data: reservation,
       message: "Reservation paid"
     })
+  } catch (e) {
+    return res.status(500).send({
+      status: "error",
+      data: {},
+      message: "Something went wrong"
+    });
+  }
 }
 
 /**
@@ -152,65 +160,81 @@ export const make = async (req: Request, res: Response) => {
  * Show all requests
  */
 export const list = async (req: Request, res: Response) => {
-  const requests = await prisma.reservations.findMany({
-    where: {
-      canceledAt: null
-    }
-  });
+  try {
+    const requests = await prisma.reservations.findMany({
+      where: {
+        canceledAt: null
+      }
+    });
 
-  return res.send({
-    status: "success",
-    data: requests
-  })
+    return res.send({
+      status: "success",
+      data: requests
+    })
+  } catch (e) {
+    return res.status(500).send({
+      status: "error",
+      data: {},
+      message: "Something went wrong"
+    });
+  }
 }
 
 export const cancel = async (req: Request, res: Response) => {
-  const currentDate = new Date();
-  const data = await prisma.reservations.findUnique({
-    where : {
-      id: req.params.id
+  try {
+    const currentDate = new Date();
+    const data = await prisma.reservations.findUnique({
+      where: {
+        id: req.params.id
+      }
+    })
+    if (data === null) {
+      return res.status(400).send({
+        status: "error",
+        data: {},
+        message: "Reservation does not exist"
+      });
     }
-  })
-  if (data === null) {
-    return res.status(400).send({
-      status: "error",
-      data: {},
-      message: "Reservation does not exist"
-    });
-  }
-  if (data.canceledAt !== null) {
-    return res.status(400).send({
-      status: "error",
-      data: {},
-      message: "Reservation already cancelled"
-    });
-  }
-  if (data.from < currentDate && data.to > currentDate) {
-    return res.status(400).send({
-      status: "error",
-      data: {},
-      message: "Reservation in progress"
-    });
-  }
-  if (data.to < currentDate) {
-    return res.status(400).send({
-      status: "error",
-      data: {},
-      message: "Reservation already ended"
-    });
-  }
-  const request = await prisma.reservations.update({
-    data: {
-      canceledAt: currentDate
-    },
-    where: {
-      id: req.params.id
+    if (data.canceledAt !== null) {
+      return res.status(400).send({
+        status: "error",
+        data: {},
+        message: "Reservation already cancelled"
+      });
     }
-  });
+    if (data.from < currentDate && data.to > currentDate) {
+      return res.status(400).send({
+        status: "error",
+        data: {},
+        message: "Reservation in progress"
+      });
+    }
+    if (data.to < currentDate) {
+      return res.status(400).send({
+        status: "error",
+        data: {},
+        message: "Reservation already ended"
+      });
+    }
+    const request = await prisma.reservations.update({
+      data: {
+        canceledAt: currentDate
+      },
+      where: {
+        id: req.params.id
+      }
+    });
 
-  return res.send({
-    status: "success",
-    data: request,
-    message: "Reservation removed"
-  })
+    return res.send({
+      status: "success",
+      data: request,
+      message: "Reservation removed"
+    })
+  } catch (e) {
+    return res.status(500).send({
+      status: "error",
+      data: {},
+      message: "Something went wrong"
+    });
+  }
 }

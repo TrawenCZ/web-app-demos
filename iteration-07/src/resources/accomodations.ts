@@ -30,6 +30,7 @@ export const store = async (req: Request, res: Response) => {
       });
     }
 
+
     const accommodation = await prisma.accomodation.create({
       data : {
         name : data.name,
@@ -82,14 +83,6 @@ export const update = async (req: Request, res: Response) => {
       message: "Accommodation stored in system"
     })
   } catch (e) {
-    if (e instanceof ValidationError) {
-      return res.status(400).send({
-        status: "error",
-        data: e.errors,
-        message: e.message
-      });
-    }
-
     return res.status(500).send({
       status: "error",
       data: {},
@@ -99,35 +92,53 @@ export const update = async (req: Request, res: Response) => {
 }
 
 export const list = async (req: Request, res: Response) => {
-  const bottomLimit = +(<any> req.query.price)?.gte || 0
-  const upperLimit = +(<any> req.query.price)?.lte || Number.MAX_SAFE_INTEGER
+  try {
+    const bottomLimit = +(<any>req.query.price)?.gte || 0
+    const upperLimit = +(<any>req.query.price)?.lte || Number.MAX_SAFE_INTEGER
 
-  const data = await prisma.accomodation.findMany({
-    where: {
-      price : {
-        lte : upperLimit,
-        gte : bottomLimit
+    const data = await prisma.accomodation.findMany({
+      where: {
+        price: {
+          lte: upperLimit,
+          gte: bottomLimit
+        }
       }
-    }
-  });
+    });
 
-  return res.send({
-    status: "success",
-    data: data
-  })
+    return res.send({
+      status: "success",
+      data: data
+    })
+  } catch (e) {
+    return res.status(500).send({
+      status: "error",
+      data: {},
+      message: "Something went wrong"
+    });
+  }
 }
 
 export const getOne = async (id: string) => {
-  return await prisma.accomodation.findUnique({
-    where: {
-      id: id
-    },
-    include : {
-      host : true
-    }
-  });
+  try {
+    return await prisma.accomodation.findUnique({
+      where: {
+        id: id
+      },
+      include: {
+        host: true
+      }
+    });
+  } catch (e) {
+    console.log(e);
+    return null;
+  }
 }
 
 export const getAll = async () => {
-  return await prisma.accomodation.findMany();
+  try {
+    return await prisma.accomodation.findMany();
+  } catch (e) {
+    console.log(e);
+    return null;
+  }
 }

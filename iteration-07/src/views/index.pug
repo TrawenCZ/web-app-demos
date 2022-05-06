@@ -10,7 +10,7 @@ head
 #root
     .ui.main.container.text.app
         .ui.secondary.menu
-            a.item.active(href='/' aria-current='page') Home
+            a.item.active(href='/accommodations' aria-current='page') Home
         h1.ui.header Today&apos;s top pick!
         .ui.items
             - var accommodation = accommodations[Math.floor(Math.random()*accommodations.length)]
