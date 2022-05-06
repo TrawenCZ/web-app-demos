@@ -38,6 +38,41 @@ export const getProductsByPrice = async (
    *        has the maximal value a number can have
    *      - if the min price is not defined, 0 should be a sufficient placeholder
    */
+  try {
+    price.maxPrice = price.maxPrice ?? Number.MAX_SAFE_INTEGER;
+    price.minPrice = price.minPrice ?? 0
+    let storeProducts = await prisma.storeProduct.findMany({
+      where : {
+        prices : {
+          some : {
+            price : {
+              lte : price.maxPrice,
+              gte : price.minPrice
+            }
+          },
+        }
+      },
+      include : {
+        product : true,
+        prices : {
+          orderBy : {
+            validFrom : "desc"
+          },
+          take : 1
+        }
+      }
+    })
 
-  return Result.err();
+    const storeProductsFiltered = storeProducts.filter((storeProduct) => {
+      const currencyCheck = price.currency ? storeProduct.prices[0]?.currency === price.currency : true
+      return storeProduct.prices[0] !== undefined && price.maxPrice !== undefined && price.minPrice !== undefined
+          && storeProduct.prices[0]?.price <= price.maxPrice
+          && storeProduct.prices[0]?.price >= price.minPrice
+          && currencyCheck;
+    })
+
+    return Result.ok(storeProductsFiltered)
+  } catch (e) {
+    return Result.err(Error("Unspecified error"))
+  }
 };

@@ -20,9 +20,31 @@ export const addProductToCategory = async (
   productId: string,
   categoryId: string
 ): ProductAddCategoryResult => {
-  /**
-   * @todo
-   */
+  try {
+    const updatedProduct = await prisma.product.update({
+      where: {
+        id: productId,
+      },
+      data : {
+        categories : {
+          connect : {
+            id : categoryId
+          }
+        }
+      },
+      include : {
+        categories: {
+          orderBy: {
+            name : "asc"
+          }
+        }
+      }
+    })
 
-  return Result.err();
+    return Result.ok(updatedProduct);
+  } catch (e) {
+    return Result.err(Error("Could not add a product to the category due to an unexpected error"));
+  }
+
+
 };

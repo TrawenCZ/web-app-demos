@@ -1,6 +1,13 @@
 import prisma from "../../client";
 import { Result } from "@badrap/result";
 import type SeedFileStructure from "../../types/data-transfer-objects";
+import type {
+    PriceDTO, ProductDTO,
+    ProductPhotoDTO,
+    StoreDTO,
+    StoreProductDTO
+} from "../../types/data-transfer-objects";
+import type { CategoryDTO } from "../../types/data-transfer-objects";
 
 /**
  * This function connects to the database and seeds it with the loaded data
@@ -9,10 +16,12 @@ import type SeedFileStructure from "../../types/data-transfer-objects";
  * @returns - `Result.ok(true)` if successful
  *          - `Result.err(_)` otherwise
  */
+
 const seedDb = async (
   yamlParsed: SeedFileStructure
 ): Promise<Result<boolean>> => {
   try {
+    console.log(yamlParsed)
     /* Transactions are used to ensure either ALL queries in the array
      * are executed correctly, or none at all.
      * This maintains the consistency of the database.
@@ -35,13 +44,76 @@ const seedDb = async (
        */
 
       // seed categories - model example
-      ...yamlParsed.categories.map((category) => {
+      ...yamlParsed.categories.map((category: CategoryDTO) => {
         return prisma.category.create({
           data: {
-            ...category,
+            id: category.id,
+            name: category.name,
+            picture: category.picture,
           },
         });
       }),
+
+      ...yamlParsed.products.map((product: ProductDTO) => {
+        return prisma.product.create({
+          data: {
+            id: product.id,
+            name: product.name,
+            description: product.description,
+            categories: {
+              connect: product.categories.map((category) => {
+                return {id: category.categoryId};
+              })
+            }
+          },
+        });
+      }),
+
+      ...yamlParsed.productPhotos.map((productPhoto: ProductPhotoDTO) => {
+        return prisma.productPhoto.create({
+          data: {
+            isMain: productPhoto.isMain,
+            source: productPhoto.source,
+            product: {
+              connect: {id: productPhoto.productId}
+            },
+          },
+        });
+      }),
+
+      ...yamlParsed.stores.map((store: StoreDTO) => {
+        return prisma.store.create({
+          data: {
+            id: store.id,
+            name: store.name,
+            eshopAddress: store.eshopAddress,
+          },
+        });
+      }),
+
+      ...yamlParsed.storeProducts.map((storeProduct: StoreProductDTO) => {
+        return prisma.storeProduct.create({
+          data: {
+            product: {
+              connect: {id: storeProduct.productId}
+            },
+            store: {
+              connect: {id: storeProduct.storeId},
+            },
+            prices: {
+              create: storeProduct.prices.map((price: PriceDTO) => {
+                return {
+                  validFrom: price.validFrom,
+                  price: price.price,
+                  currency: price.currency
+                }
+              })
+            }
+          },
+        });
+      }),
+
+
 
       /* continue yourself - continue in the order that the data is stored
        * in the file

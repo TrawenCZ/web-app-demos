@@ -18,9 +18,24 @@ import type { ProductGetResult } from "../../../types/return-types";
 export const getProductsByStoreURLs = async (
   storeURLs: string[]
 ): ProductGetResult => {
-  /**
-   * @todo
-   */
+  try {
+    const products = await prisma.product.findMany({
+      where : {
+        inStores : {
+          some : {
+            store : {
+              eshopAddress: { in : storeURLs }
+            }
+          }
+        }
+      },
+      orderBy : {
+        name : "asc"
+      }
+    })
 
-  return Result.err();
+    return Result.ok(products);
+  } catch (e) {
+    return Result.err(Error("Unspecified error"));
+  }
 };
