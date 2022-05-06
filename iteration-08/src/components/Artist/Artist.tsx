@@ -18,16 +18,12 @@ export function Artist({
   return (
     <div className="wrapper">
       <div className="buttons">
-        {!isNavigationDisabled && (
-        <>
-          <button className="navigation-button" type="button">
-            <img alt="Go back" className="image" src={backIcon} />
-          </button>
-          <button className="navigation-button" type="button">
-            <img alt="Go next" className="image" src={forwardIcon} />
-          </button>
-        </>
-        )}
+        <button className="navigation-button" disabled={isNavigationDisabled} type="button">
+          <img alt="Go back" className="image" src={backIcon} />
+        </button>
+        <button className="navigation-button" disabled={isNavigationDisabled} type="button">
+          <img alt="Go next" className="image" src={forwardIcon} />
+        </button>
       </div>
       <div className="author">
         <div className="author__photo-wrapper">

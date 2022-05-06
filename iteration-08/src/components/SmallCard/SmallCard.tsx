@@ -1,9 +1,7 @@
 import React from 'react';
 import './smallCard.css';
 
-export interface SmallCardProps {
-    // eslint-disable-next-line react/no-unused-prop-types
-    id: number,
+interface SmallCardProps {
   photo: string,
   title: string
 }

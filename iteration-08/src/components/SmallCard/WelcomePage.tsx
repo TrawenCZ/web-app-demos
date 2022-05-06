@@ -1,6 +1,12 @@
 import React from 'react';
 import './smallCard.css';
-import SmallCard, { SmallCardProps } from './SmallCard';
+import SmallCard from './SmallCard';
+
+interface SmallCardProps {
+    id : number,
+    photo: string,
+    title: string
+}
 
 export const WelcomePage = () => {
   // eslint-disable-next-line no-unused-vars
@@ -19,7 +25,7 @@ export const WelcomePage = () => {
         Good evening
       </div>
       <div className="card-container">
-        {Cards.map((props : SmallCardProps) => <SmallCard key={props.id} {...props} />)}
+        {Cards.map((props: SmallCardProps) => <SmallCard key={props.id} {...props} />)}
       </div>
     </div>
   );
