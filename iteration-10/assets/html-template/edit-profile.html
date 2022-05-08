@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="styles/normalize.css" />
+    <link rel="stylesheet" href="styles/style.css" />
+    <title>Discord iteration</title>
+  </head>
+  <!-- identical start of the app -->
+  <body class="app">
+    <!-- Navigation handles different settings now -->
+    <nav class="navigation">
+      <!-- Setting categories -->
+      <div class="navigation__setting-categories categories">
+        <!-- Setting category -->
+        <div class="navigation__setting-category category">
+          <h2 class="category__heading heading heading--2">User settings</h2>
+          <!-- Setting pages -->
+          <ul class="list category__items items">
+            <!-- Only the "My Account" window is the part of the iteration -->
+            <li class="setting category__item category__item--selected item">
+              <span class="item__name">My Account</span>
+            </li>
+
+            <li class="setting category__item item">
+              <span class="item__name">User Profile</span>
+            </li>
+
+            <li class="setting category__item item">
+              <span class="item__name">Privacy &amp; Safety</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Actual main app window -->
+    <main class="main-window main-settings">
+      <!-- Setting window header -->
+      <h1 class="main-settings__heading heading heading--1">My account</h1>
+      <!-- Settings themselves: -->
+      <div class="main-settings__content">
+        <!-- Profile editor is used to edit the profile -->
+        <div class="profile-editor">
+          <!-- Banner with color -->
+          <div class="profile-editor__banner"></div>
+          <div class="profile-editor__controls">
+            <!-- Current profile informations: -->
+            <div class="profile-editor__profile profile-info">
+              <div class="profile-editor__profile-picture profile-picture">
+                <img
+                  src="static-files/images/default-profile.png"
+                  alt="X's profile picture"
+                  class="profile-editor__pfp-image profile-picture__image img"
+                />
+              </div>
+              <div class="profile-info__account-info">
+                <h2 class="profile-info__name heading heading--2">
+                  General Obi-wan Kenobi
+                </h2>
+                <span class="profile-info__slug">#0178</span>
+              </div>
+              <!-- Button which allows editing profile info: -->
+              <button class="profile-info__allow-edit button">
+                Edit profile
+              </button>
+            </div>
+
+            <!-- Form which handles editing -->
+            <form class="profile-editor__form">
+              <label class="profile-editor__label label" for="username-disabled"
+                >Username</label
+              >
+
+              <!-- Figure out the way to get the current data either in the placeholder portion,
+                   or better pre-written so the user can edit it
+                   The choice is yours
+              -->
+              <input
+                type="text"
+                class="profile-editor__input"
+                name="username"
+                id="username-disabled"
+                placeholder="Current username: X"
+              />
+
+              <label class="profile-editor__label label" for="email-disabled"
+                >Email</label
+              >
+              <input
+                type="email"
+                class="profile-editor__input"
+                name="email"
+                id="email-disabled"
+                placeholder="Current email: X"
+              />
+
+              <input
+                type="submit"
+                class="profile-editor__submit button"
+                value="Change profile info"
+              />
+            </form>
+          </div>
+        </div>
+
+        <!--
+
+          BEFORE the button for editing the profile information was pressed
+          the form should be in this state -> elements have additional classes
+          and are set to `disabled`
+
+         -->
+        <div class="profile-editor">
+          <div class="profile-editor__banner"></div>
+          <div class="profile-editor__controls">
+            <div class="profile-editor__profile profile-info">
+              <div class="profile-editor__profile-picture profile-picture">
+                <img
+                  src="static-files/images/default-profile.png"
+                  alt="X's profile picture"
+                  class="profile-editor__pfp-image profile-picture__image img"
+                />
+              </div>
+              <div class="profile-info__account-info">
+                <h2 class="profile-info__name heading heading--2">
+                  This is before user clicks "edit profile"
+                </h2>
+                <span class="profile-info__slug">#0178</span>
+              </div>
+              <button class="profile-info__allow-edit button">
+                Edit profile
+              </button>
+            </div>
+
+            <form class="profile-editor__form">
+              <label class="profile-editor__label label" for="username"
+                >Username</label
+              >
+              <input
+                type="text"
+                class="profile-editor__input"
+                name="username"
+                id="username"
+                placeholder="Current username: X"
+                disabled
+              />
+
+              <label class="profile-editor__label label" for="email"
+                >Email</label
+              >
+              <input
+                type="email"
+                class="profile-editor__input"
+                name="email"
+                id="email"
+                placeholder="Current email: X"
+                disabled
+              />
+
+              <input
+                type="submit"
+                class="profile-editor__submit profile-editor__submit--disabled button"
+                value="Change profile info"
+                disabled
+              />
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="styles/normalize.css" />
+    <link rel="stylesheet" href="styles/style.css" />
+    <title>Discord iteration</title>
+  </head>
+  <!-- 
+    
+
+
+
+
+    IMPORTANT: do NOT copy these comments, they are here only to point you in the right direction
+
+
+
+
+   -->
+
+  <!-- The start of our react app -->
+  <body class="app">
+    <!-- Navigation block -->
+    <nav class="navigation">
+      <!-- Header -->
+      <div class="navigation__server-header header">
+        <h1 class="navigation__server-heading heading heading--1">
+          PB138 Modern Markup Languages
+        </h1>
+      </div>
+
+      <!-- Categories -->
+      <div class="navigation__channels-categories categories">
+        <!-- Singular category -->
+        <div class="navigation__channel-category category">
+          <h2 class="category__heading heading heading--2">Information</h2>
+          <!-- Channels in category -->
+          <ul class="list channels category__items items">
+            <!-- One channel - includes an icon and a channel name -->
+            <li class="channel category__item item">
+              <img
+                src="static-files/images/hashtag.svg"
+                alt="Server channel icon"
+                class="channel__image image"
+              />
+              <span class="channel__name item__name"
+                >organizational-instructions</span
+              >
+            </li>
+            <li class="channel category__item item">
+              <img
+                src="static-files/images/hashtag.svg"
+                alt="Server channel icon"
+                class="channel__image image"
+              />
+              <span class="channel__name item__name">welcome-and-rules</span>
+            </li>
+            <li class="channel category__item item">
+              <img
+                src="static-files/images/hashtag.svg"
+                alt="Server channel icon"
+                class="channel__image image"
+              />
+              <span class="channel__name item__name">additional-resources</span>
+            </li>
+            <li class="channel category__item item">
+              <img
+                src="static-files/images/speaker.svg"
+                alt="Server channel icon"
+                class="channel__image image"
+              />
+              <span class="channel__name item__name">general-voice</span>
+            </li>
+          </ul>
+        </div>
+        <div class="navigation__channel-category category">
+          <h2 class="category__heading heading heading--2">Discussion</h2>
+          <ul class="list channels category__items items">
+            <li class="channel category__item item">
+              <img
+                src="static-files/images/hashtag.svg"
+                alt="Server channel icon"
+                class="channel__image image"
+              />
+              <span class="channel__name item__name">general</span>
+            </li>
+            <li class="channel category__item category__item--selected item">
+              <img
+                src="static-files/images/hashtag.svg"
+                alt="Server channel icon"
+                class="channel__image image"
+              />
+              <span class="channel__name item__name">react</span>
+            </li>
+            <li class="channel category__item item">
+              <img
+                src="static-files/images/hashtag.svg"
+                alt="Server channel icon"
+                class="channel__image image"
+              />
+              <span class="channel__name item__name">typescript</span>
+            </li>
+            <li class="channel category__item category__item--muted item">
+              <img
+                src="static-files/images/hashtag-muted.svg"
+                alt="Server channel icon"
+                class="channel__image image"
+              />
+              <span class="channel__name item__name">php</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- You do not have to keep the anchor tag here - it is only
+           used for referencing the other html template. You can use whatever you deem fit
+           as this element (be it `div` or something else).
+
+           The user portion of the navigation with the name and the profile picture
+      -->
+      <a href="edit-profile.html" class="navigation__profile profile link">
+        <div
+          class="navigation__profile-picture profile__picture profile-picture"
+        >
+          <img
+            src="static-files/images/default-profile.png"
+            alt="User's profile picture"
+            class="profile-picture__image image"
+          />
+        </div>
+        <div class="profile__info">
+          <div class="profile__name">General Kenobi</div>
+          <div class="profile__slug">#1204</div>
+        </div>
+      </a>
+    </nav>
+
+    <!-- Actual main app window -->
+    <main class="main-window main-channel">
+      <!-- Channel header -->
+      <div class="main-channel__header header">
+        <img
+          src="static-files/images/hashtag.svg"
+          alt="Server channel icon"
+          class="main-channel__logo"
+        />
+        <h1 class="main-channel__heading heading heading--1">react</h1>
+      </div>
+
+      <!-- Chat - for displaying messages dynamically -->
+      <div class="main-channel__chat chat">
+        <!-- This div starts every channel, even empty ones -->
+        <div class="chat__start chat-start">
+          <h2 class="chat-start__heading heading heading--2">
+            Welcome to the start of the
+            <img
+              src="static-files/images/hashtag.svg"
+              class="chat-start__icon image"
+              alt="Server channel icon"
+            />react channel
+          </h2>
+        </div>
+
+        <!-- Message container -->
+        <div class="chat__message message">
+          <!-- Sender profile picture -->
+          <div class="message__profile-picture profile-picture">
+            <img
+              src="static-files/images/default-profile.png"
+              class="profile-picture__image image"
+              alt="Sender's profile picture"
+            />
+          </div>
+
+          <!-- Sender & message details (name, sent at) -->
+          <div class="message__sent-by">
+            <h2 class="message__sender-name heading heading--2">
+              General Kenobi
+            </h2>
+            <span class="message__sent-at">Yesterday at 11:14PM</span>
+          </div>
+
+          <!-- The content of the message -> for now only text, could be upgraded to handle multimedia -->
+          <div class="message__content">
+            To be fair, you have to have a very high IQ to understand Rick and
+            Morty. The humor is extremely subtle, and without a solid grasp of
+            theoretical physics most of the jokes will go over a typical
+            viewer's head. There's also Rick's nihilistic outlook, which is
+            deftly woven into his characterisation - his personal philosophy
+            draws heavily from Narodnaya Volya literature, for instance. The
+            fans understand this stuff; they have the intellectual capacity to
+            truly appreciate the depths of these jokes, to realize that they're
+            not just funny- they say something deep about LIFE. As a consequence
+            people who dislike Rick and Morty truly ARE idiots- of course they
+            wouldn't appreciate, for instance, the humour in Rick's existencial
+            catchphrase "Wubba Lubba Dub Dub," which itself is a cryptic
+            reference to Turgenev's Russian epic Fathers and Sons I'm smirking
+            right now just imagining one of those addlepated simpletons
+            scratching their heads in confusion as Dan Harmon's genius unfolds
+            itself on their television screens. What fools... how I pity them.
+            😂 And yes by the way, I DO have a Rick and Morty tattoo. And no,
+            you cannot see it. It's for the ladies' eyes only- And even they
+            have to demonstrate that they're within 5 IQ points of my own
+            (preferably lower) beforehand.
+          </div>
+
+          <!-- Message controls (hidden unless user hovers) -->
+          <div class="message__controls controls">
+            <!-- Button for editing a message -->
+            <button class="controls__control">
+              <img
+                src="static-files/images/edit.svg"
+                class="controls__icon"
+                alt="Edit message"
+              />
+            </button>
+            <!-- Button for deleting a message -->
+            <button class="controls__control">
+              <img
+                src="static-files/images/delete.svg"
+                class="controls__icon"
+                alt="Delete message"
+              />
+            </button>
+          </div>
+        </div>
+
+        <div class="chat__message message">
+          <div class="message__profile-picture profile-picture">
+            <img
+              src="static-files/images/default-profile.png"
+              class="profile-picture__image image"
+              alt="Sender's profile picture"
+            />
+          </div>
+
+          <div class="message__sent-by">
+            <h2 class="message__sender-name heading heading--2">
+              General Kenobi
+            </h2>
+            <span class="message__sent-at">Yesterday at 11:14PM</span>
+          </div>
+
+          <!-- Pay attention! in this message, there is an "edited" mark
+               Use it to mark messages as edited
+          -->
+          <div class="message__content">
+            According to all known laws of aviation, there is no way a bee
+            should be able to fly. Its wings are too small to get its fat little
+            body off the ground. The bee, of course, flies anyway because bees
+            don't care what humans think is impossible. Yellow, black. Yellow,
+            black. Yellow, black. Yellow, black. Ooh, black and yellow! Let's
+            shake it up a little. Barry! Breakfast is ready! Ooming! Hang on a
+            second. Hello? - Barry? - Adam? - Can you believe this is happening?
+            - I can't. I'll pick you up.<span class="message__edited"
+              >(edited)</span
+            >
+          </div>
+          <div class="message__controls controls">
+            <button class="controls__control">
+              <img
+                src="static-files/images/edit.svg"
+                class="controls__icon"
+                alt="Edit message"
+              />
+            </button>
+            <button class="controls__control">
+              <img
+                src="static-files/images/delete.svg"
+                class="controls__icon"
+                alt="Delete message"
+              />
+            </button>
+          </div>
+
+          <!-- 
+              This form here should be displayed conditionally and handles
+              editing the message -> this part should be a bonus portion of the iteration
+
+              Figure out a way how to fill input with the content of the message you're trying to edit
+           -->
+          <div class="message-edit">
+            <form action="" class="message-edit__form">
+              <input
+                type="text"
+                placeholder="Add the content of the message to the input here"
+                class="message-edit__text-input"
+              />
+              <input
+                type="submit"
+                value="Edit message"
+                class="message-edit__send button"
+              />
+            </form>
+          </div>
+        </div>
+
+        <div class="chat__message message">
+          <div class="message__profile-picture profile-picture">
+            <img
+              src="static-files/images/default-profile.png"
+              class="profile-picture__image image"
+              alt="Sender's profile picture"
+            />
+          </div>
+
+          <div class="message__sent-by">
+            <h2 class="message__sender-name heading heading--2">Wierd Al</h2>
+            <span class="message__sent-at">Today at 1:36PM</span>
+          </div>
+
+          <div class="message__content">Where am I? What is this "React"??</div>
+        </div>
+      </div>
+
+      <!-- Input for sending messages -->
+      <div class="chat-input">
+        <form action="" class="chat-input__form">
+          <input
+            type="text"
+            name=""
+            id=""
+            placeholder="Write message"
+            class="chat-input__text-input"
+          />
+          <input
+            type="submit"
+            value="Send message"
+            class="chat-input__send button"
+          />
+        </form>
+      </div>
+    </main>
+  </body>
+</html>
