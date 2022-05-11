@@ -53,6 +53,7 @@ export const getById = async (req: Request, res: Response) => {
           createdAt: true,
           sender: {
             select: {
+              id: true,
               name: true,
               picture: true,
             }
