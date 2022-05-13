@@ -1,14 +1,14 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { Artist } from './Artist';
+import { Artist, ArtistProps } from './Artist';
 
 export default {
   title: 'Spotify/Artist',
   component: Artist,
 } as ComponentMeta<typeof Artist>;
 
-const Template: ComponentStory<typeof Artist> = () => <Artist />;
+const Template: ComponentStory<typeof Artist> = (props: ArtistProps) => <Artist {...props} />;
 
 export const GlassAnimals = Template.bind({});
 GlassAnimals.args = {

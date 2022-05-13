@@ -1,14 +1,15 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { CurrentSong } from './CurrentSong';
+import { CurrentSong, CurrentSongProps } from './CurrentSong';
 
 export default {
   title: 'Spotify/Current Song',
   component: CurrentSong,
 } as ComponentMeta<typeof CurrentSong>;
 
-const Template: ComponentStory<typeof CurrentSong> = () => <CurrentSong />;
+const Template:
+    ComponentStory<typeof CurrentSong> = (props: CurrentSongProps) => <CurrentSong {...props} />;
 
 export const NGGYU = Template.bind({});
 NGGYU.args = {
