@@ -1,4 +1,0 @@
-include:
-  - project: 'pb138/ci'
-    ref: 'main'
-    file: 'iterations.yml'
