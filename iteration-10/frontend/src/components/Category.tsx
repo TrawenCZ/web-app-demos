@@ -8,11 +8,11 @@ export interface CategoryProps {
 }
 
 export const Category = ({id, name, channels} : CategoryProps) => {
-    const [hidden, changeAppearance] = useState<boolean>(false);
+    const [shouldAppear, changeAppearance] = useState<boolean>(true);
     return (
         <div className="navigation__channel-category category">
-            <h2 className="category__heading heading heading--2" onClick={() => changeAppearance(!hidden)} >{name}</h2>
-            {hidden ||
+            <h2 className="category__heading heading heading--2" onClick={() => changeAppearance(!shouldAppear)} >{name}</h2>
+            {shouldAppear &&
                 <ul className="list channels category__items items">
                     { channels.map((channel: ChannelProps) => <Channel key={channel.id} {...channel} />) }
                 </ul>}

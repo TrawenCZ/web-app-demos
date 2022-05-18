@@ -1,4 +1,4 @@
-import hashtag from "../../public/assets/hashtag.svg";
+import hashtag from "/assets/hashtag.svg";
 
 interface ChannelHeaderProps {
     name: string
@@ -13,7 +13,6 @@ export const ChannelHeader = ({name} : ChannelHeaderProps) => {
                 className="main-channel__logo"
             />
             <h1 className="main-channel__heading heading heading--1">{name}</h1>
-
         </div>
     );
 }

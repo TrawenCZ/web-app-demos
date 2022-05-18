@@ -1,8 +1,6 @@
 import React, {useState} from 'react';
 import { useParams } from 'react-router-dom';
 import { userId } from '../store/user';
-import '../styles/index.css';
-import '../styles/normalize.css'
 import { SubmitHandler, useForm } from "react-hook-form";
 import axios from 'axios';
 import {useSWRConfig} from "swr";
@@ -15,7 +13,6 @@ export function InputField() {
     const { channelId } = useParams();
     const { register, handleSubmit, formState: { errors } } = useForm<InputProps>();
     const { mutate } = useSWRConfig();
-    const [val, setVal] = useState("");
 
     const sendMessage: SubmitHandler<InputProps> = async (data: InputProps) => {
         const headers = {
@@ -41,12 +38,10 @@ export function InputField() {
                     autoComplete="off"
                     {...register('content', { required: true, minLength: 1 })}
                 />
-                {errors.content && <div className="message-error" >Message must not be empty!</div>}
                 <input
                     type="submit"
                     value="Send message"
                     className="chat-input__send button"
-                    onClick={() => setVal("")}
                 />
             </form>
         </div>

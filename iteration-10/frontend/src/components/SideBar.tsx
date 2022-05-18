@@ -16,7 +16,7 @@ export const SideBar = () => {
         <nav className="navigation">
             <Header/>
             <div className="navigation__channels-categories categories">
-                { categories.map((category: CategoryProps) => <Category key={category.id} {...category} />) }
+                { categories.map((category) => <Category key={category.id} {...category} />) }
             </div>
             <Footer/>
         </nav>

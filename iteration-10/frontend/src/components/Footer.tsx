@@ -14,7 +14,7 @@ export const Footer = () => {
 
     return (
         <Link to="/edit-profile">
-            <a href="edit-profile.html" className="navigation__profile profile link">
+            <a className="navigation__profile profile link">
                 <div
                     className="navigation__profile-picture profile__picture profile-picture"
                 >

@@ -23,8 +23,8 @@ export const Pages = () => {
                     <div className="app">
                         <SidebarEdit/>
                         <MainEdit/>
-                    </div>}
-                />
+                    </div>
+                }/>
             </Routes>
         </BrowserRouter>
     );

@@ -1,6 +1,6 @@
 import {MessageProps} from "./Message";
 import {Link, useParams} from "react-router-dom";
-import hashtag from "../../public/assets/hashtag.svg";
+import hashtag from "/assets/hashtag.svg";
 
 export interface ChannelProps {
     id : string,
@@ -19,8 +19,8 @@ export const Channel = ({id, name} : ChannelProps) => {
                     alt="Server channel icon"
                     className="channel__image image"/>
                 <span className="channel__name item__name">
-            {name}
-        </span>
+                    {name}
+                </span>
             </li>
         </Link>
     );
