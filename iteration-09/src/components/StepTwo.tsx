@@ -5,25 +5,25 @@ interface InputFormProps {
     saveData : Function
 }
 
-export const phoneCodeEnum = {
-    czech : "+420",
-    slovakia : "+421"
-} as const
+export enum phoneCodeEnum {
+    czech = "+420",
+    slovakia = "+421"
+}
 
 export interface IFormInput {
     name : string,
     surname : string,
     street : string,
-    streetNo : string,
+    streetNo : number,
     city : string,
     zipCode : number,
-    phone : string,
-    phoneCode : keyof typeof phoneCodeEnum,
+    phone : number,
+    phoneCode : phoneCodeEnum,
     email : string,
     note : string
 }
 
-export const InputForm = ({nextAction, saveData}: InputFormProps) => {
+export const StepTwo = ({nextAction, saveData}: InputFormProps) => {
     const {
         register,
         formState: { errors },
@@ -69,10 +69,11 @@ export const InputForm = ({nextAction, saveData}: InputFormProps) => {
             <label>Street no.*</label>
             <input
                 className={`text-field ${errors.streetNo && "text-field--error"}`}
+                type="number"
                 {...register("streetNo", { required: true })}
             />
             {errors.streetNo && (
-                <p className="registration__error">Street no is required</p>
+                <p className="registration__error">Street no is required and has to be a number</p>
             )}
 
             <label>City*</label>
@@ -87,6 +88,7 @@ export const InputForm = ({nextAction, saveData}: InputFormProps) => {
             <label>Zip code*</label>
             <input
                 className={`text-field ${errors.zipCode && "text-field--error"}`}
+                type="number"
                 {...register("zipCode", { required: true, minLength: 5, maxLength: 6})}
             />
             {errors.zipCode && (
@@ -102,10 +104,11 @@ export const InputForm = ({nextAction, saveData}: InputFormProps) => {
             </select>
             <input
                 className={`text-field ${errors.phone && "text-field--error"}`}
+                type="number"
                 {...register("phone", { required: true, minLength : 9, maxLength : 11})}
             />
             {errors.phone && (
-                <p className="registration__error">Phone no is required and it must have 9 digits</p>
+                <p className="registration__error">Phone no is required and must have 9 digits</p>
             )}
             </div>
 
