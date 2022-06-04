@@ -11,7 +11,7 @@ type InputProps = {
 
 export function InputField() {
     const { channelId } = useParams();
-    const { register, handleSubmit, formState: { errors } } = useForm<InputProps>();
+    const { register, handleSubmit, reset } = useForm<InputProps>();
     const { mutate } = useSWRConfig();
 
     const sendMessage: SubmitHandler<InputProps> = async (data: InputProps) => {
@@ -25,6 +25,7 @@ export function InputField() {
         }
         await axios.post('http://localhost:4000/message/', request, {headers})
         await mutate(`http://localhost:4000/channel/${channelId}`)
+        reset()
     }
 
     return (
@@ -47,7 +48,5 @@ export function InputField() {
         </div>
     );
 }
-
-
 
 export default InputField;
